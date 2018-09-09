@@ -25,9 +25,14 @@ var onRemoveAll = function onRemoveAll() {
     console.log('remove');
 };
 
-var appRoot = document.getElementById('app');
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    var option = app.options[randomNum];
+    alert(option);
+    console.log(randomNum);
+};
 
-var numbers = [55, 101, 1000];
+var appRoot = document.getElementById('app');
 
 //JSX - Javascript XML extension provided to us by react, not native to javascript
 var renderApp = function renderApp() {
@@ -50,9 +55,9 @@ var renderApp = function renderApp() {
             app.options.length > 0 ? 'Here are your options' : 'No options'
         ),
         React.createElement(
-            'p',
-            null,
-            app.options.length
+            'button',
+            { disabled: app.options.length === 0, onClick: onMakeDecision },
+            'What Should I do?'
         ),
         React.createElement(
             'button',
@@ -66,7 +71,6 @@ var renderApp = function renderApp() {
                 return React.createElement(
                     'li',
                     { key: option },
-                    'Option: ',
                     option,
                     ' '
                 );

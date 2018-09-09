@@ -50,10 +50,14 @@ var addOne = function addOne() {
     console.log('addOne', count);
 };
 var minusOne = function minusOne() {
+    count--;
+    renderCounterApp();
     console.log('minusOne');
 };
 
 var reset = function reset() {
+    count = 0;
+    renderCounterApp();
     console.log('reset');
 };
 

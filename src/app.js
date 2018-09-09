@@ -28,10 +28,14 @@ const addOne = () => {
     console.log('addOne', count);
 };
 const minusOne = () => {
+    count--;
+    renderCounterApp();
     console.log('minusOne');
 };
 
 const reset = () => {
+    count = 0;
+    renderCounterApp();
     console.log('reset');
 };
 

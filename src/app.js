@@ -38,19 +38,9 @@ const renderApp = () => {
             <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
             <p>{app.options.length}</p>
             <button onClick={onRemoveAll}>Remove All</button>
-            {
-                //JSX behind the scenes optimizes the rendering process
-                numbers.map((number) => {
-                    return <p key={number}>Number: {number} </p>
-            })
-            }
-
             <ol>
                 {
-                    //JSX behind the scenes optimizes the rendering process
-                    app.options.map((option) => {
-                        return <li key={option}>Option: {option} </li>
-                    })
+                    app.options.map((option) => <li key={option}>Option: {option} </li>)
                 }
 
             </ol>

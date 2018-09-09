@@ -59,22 +59,9 @@ var renderApp = function renderApp() {
             { onClick: onRemoveAll },
             'Remove All'
         ),
-
-        //JSX behind the scenes optimizes the rendering process
-        numbers.map(function (number) {
-            return React.createElement(
-                'p',
-                { key: number },
-                'Number: ',
-                number,
-                ' '
-            );
-        }),
         React.createElement(
             'ol',
             null,
-
-            //JSX behind the scenes optimizes the rendering process
             app.options.map(function (option) {
                 return React.createElement(
                     'li',

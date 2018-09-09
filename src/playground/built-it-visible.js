@@ -1,28 +1,23 @@
-
-const app = {
-    title: 'Visibility Toggle',
-    subtitle: 'Put your choices in the hands of a computer',
-    options: []
-};
-
-let buttonWording = 'Show details';
-let clickResult = '';
-
-const switchDetails = () => {
-    clickResult = 'Hey. These are some details you can see now!';
-buttonWording = 'Hide details';
+const toggleVisibility = () => {
+    visibility = !visibility;
     renderApp();
 };
 
-let visibility =false; 
+let visibility =false;
 
 //JSX - Javascript XML extension provided to us by react, not native to javascript
 const renderApp = () => {
     const template = (
         <div>
-            <h1>{(app.title) ? app.title + '!' : 'Null'}</h1>
-            <button onClick={switchDetails}>{buttonWording}</button>
-            <p>{(clickResult)? 'Hey. These are some details you can see now!' : ''}</p>
+            <h1>Visibility Toggle</h1>
+            <button onClick={toggleVisibility}>
+            {visibility ? 'Hide details' : 'Show details'}
+            </button>
+            { visibility && (
+                <div>
+                    <p>Hey. These are some details you can see now!</p>
+                </div>
+            )}
         </div>
     );
 

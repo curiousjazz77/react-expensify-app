@@ -1,17 +1,7 @@
 'use strict';
 
-var app = {
-    title: 'Visibility Toggle',
-    subtitle: 'Put your choices in the hands of a computer',
-    options: []
-};
-
-var buttonWording = 'Show details';
-var clickResult = '';
-
-var switchDetails = function switchDetails() {
-    clickResult = 'Hey. These are some details you can see now!';
-    buttonWording = 'Hide details';
+var toggleVisibility = function toggleVisibility() {
+    visibility = !visibility;
     renderApp();
 };
 
@@ -25,17 +15,21 @@ var renderApp = function renderApp() {
         React.createElement(
             'h1',
             null,
-            app.title ? app.title + '!' : 'Null'
+            'Visibility Toggle'
         ),
         React.createElement(
             'button',
-            { onClick: switchDetails },
-            buttonWording
+            { onClick: toggleVisibility },
+            visibility ? 'Hide details' : 'Show details'
         ),
-        React.createElement(
-            'p',
+        visibility && React.createElement(
+            'div',
             null,
-            clickResult ? 'Hey. These are some details you can see now!' : ''
+            React.createElement(
+                'p',
+                null,
+                'Hey. These are some details you can see now!'
+            )
         )
     );
 

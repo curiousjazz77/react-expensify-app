@@ -87,15 +87,10 @@ var Traveler = function (_Person2) {
     }
 
     _createClass(Traveler, [{
-        key: 'hasHomeLocation',
-        value: function hasHomeLocation() {
-            return !!this.homeLocation;
-        }
-    }, {
         key: 'getGreeting',
         value: function getGreeting() {
             var greeting = _get(Traveler.prototype.__proto__ || Object.getPrototypeOf(Traveler.prototype), 'getGreeting', this).call(this);
-            if (this.hasHomeLocation()) {
+            if (this.homeLocation) {
                 greeting += ' I\'m visiting from ' + this.homeLocation + '.';
             }
             return greeting;

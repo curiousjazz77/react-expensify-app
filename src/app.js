@@ -1,3 +1,17 @@
+//React components extend react and have to be title case
+class IndecisionApp extends React.Component {
+    render() {
+        return (
+            <div>
+                <Header />
+                <Action />
+                <Options />
+                <AddOption />
+            </div>
+        );
+    }
+}
+
 class Header extends React.Component {
     render() {
         return (
@@ -7,7 +21,6 @@ class Header extends React.Component {
             </div>
         );
     }
-
 }
 
 class Action extends React.Component {
@@ -51,5 +64,5 @@ const jsx = (
         <Options />
         <AddOption />
     </div>
-)
+);
 ReactDOM.render(jsx, document.getElementById('app'));

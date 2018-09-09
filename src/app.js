@@ -43,12 +43,16 @@ class Action extends React.Component {
 //Options component
 
 class Options extends React.Component {
+    handleRemove(){
+        alert('handleRemove');
+    }
     render() {
         return (
             <div>
                 {
                     this.props.options.map((option) => <Option key={option} optionText={option}/>)
                 }
+                <button onClick={this.handleRemove}>Remove all</button>
             </div>
         )
     }

@@ -11,9 +11,8 @@ const square = function (x){
 
 const squareArrow = (x) => x * x;
 
-const fullName = 'Idrin Elba';
-const getFirstArrow = (name) => name.split(' ')[0];;
+const getFirstName = (fullName) => fullName.split(' ')[0];;
 
 console.log(square(8));
 console.log(squareArrow(4));
-console.log(getFirstArrow(fullName));
+console.log(getFirstName('Idrin Elba'));

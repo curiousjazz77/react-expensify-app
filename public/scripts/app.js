@@ -27,6 +27,8 @@ var onRemoveAll = function onRemoveAll() {
 
 var appRoot = document.getElementById('app');
 
+var numbers = [55, 101, 1000];
+
 //JSX - Javascript XML extension provided to us by react, not native to javascript
 var renderApp = function renderApp() {
     var template = React.createElement(
@@ -59,19 +61,15 @@ var renderApp = function renderApp() {
         ),
 
         //JSX behind the scenes optimizes the rendering process
-        [React.createElement(
-            'p',
-            { key: '1' },
-            'a'
-        ), React.createElement(
-            'p',
-            { key: '2' },
-            'b'
-        ), React.createElement(
-            'p',
-            { key: '3' },
-            'c'
-        )],
+        numbers.map(function (number) {
+            return React.createElement(
+                'p',
+                { key: number },
+                'Number: ',
+                number,
+                ' '
+            );
+        }),
         React.createElement(
             'ol',
             null,

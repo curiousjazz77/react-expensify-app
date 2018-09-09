@@ -26,6 +26,9 @@ const onRemoveAll = () => {
 
 const appRoot = document.getElementById('app');
 
+const numbers = [55, 101, 1000]
+
+
 //JSX - Javascript XML extension provided to us by react, not native to javascript
 const renderApp = () => {
     const template = (
@@ -37,7 +40,9 @@ const renderApp = () => {
             <button onClick={onRemoveAll}>Remove All</button>
             {
                 //JSX behind the scenes optimizes the rendering process
-                [<p key="1">a</p>, <p key="2">b</p>, <p key="3">c</p>]
+                numbers.map((number) => {
+                    return <p key={number}>Number: {number} </p>
+            })
             }
 
             <ol>

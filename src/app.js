@@ -21,12 +21,16 @@ const template = (
 );
 
 let count = 0;
-const someId = 'myidhere';
+const addOne = () => {
+    console.log('addOne');
+};
 //needs to be called className instead of class in JSX
 const templateTwo = (
     <div>
         <h1>Count: {count}</h1>
-        <button id={someId} className ="button">+1</button>
+        <button onClick={ () => {
+            console.log('some value here');
+        }}>+1</button>
     </div>
 );
 

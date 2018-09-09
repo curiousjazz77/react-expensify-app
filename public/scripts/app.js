@@ -43,7 +43,9 @@ var app = {
 );
 
 var count = 0;
-var someId = 'myidhere';
+var addOne = function addOne() {
+    console.log('addOne');
+};
 //needs to be called className instead of class in JSX
 var templateTwo = React.createElement(
     'div',
@@ -56,7 +58,9 @@ var templateTwo = React.createElement(
     ),
     React.createElement(
         'button',
-        { id: someId, className: 'button' },
+        { onClick: function onClick() {
+                console.log('some value here');
+            } },
         '+1'
     )
 );

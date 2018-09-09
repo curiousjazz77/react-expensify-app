@@ -64,8 +64,8 @@ var user = {
 );
 
 var titleSubtitle = {
-    title: 'Hello',
-    subtitle: 'my people'
+    title: 'Indecision app',
+    subtitle: 'Put your choices in the hands of a computer'
 };
 
 var templateThree = React.createElement(

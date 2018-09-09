@@ -4,8 +4,8 @@ We also want to have a getDescription()
  */
 
 class Person {
-    constructor(name) {
-        this.name = name || 'test';
+    constructor(name = 'Anonymous') {
+        this.name = name;
     }
 }
 

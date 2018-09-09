@@ -7,10 +7,12 @@ Each car has a make, model, and vin
 We also want to have a getDescription()
  */
 
-var Person = function Person(name) {
+var Person = function Person() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+
     _classCallCheck(this, Person);
 
-    this.name = name || 'test';
+    this.name = name;
 };
 
 var me = new Person('Idrin ELba');

@@ -2,41 +2,6 @@
 
 console.log('App.js is running!');
 
-var user = {
-    name: 'Idrin',
-    age: 23,
-    location: 'Cincinnati'
-};
-
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'Location: ',
-            location
-        );
-    }
-}
-
-//Dynamic injection
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        user.name ? user.name : 'Anonymous'
-    ),
-    user.age && user.age >= 18 && React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
-    ),
-    getLocation(user.location)
-);
-
 var app = {
     title: 'Indecision app',
     subtitle: 'Put your choices in the hands of a computer',
@@ -77,21 +42,26 @@ var app = {
     )
 );
 
-var templateThree = React.createElement(
+var count = 0;
+var someId = 'myidhere';
+//needs to be called className instead of class in JSX
+var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        app.title ? app.title + '!' : 'Null'
+        'Count: ',
+        count
     ),
     React.createElement(
-        'p',
-        null,
-        app.subtitle ? app.subtitle : 'Null'
+        'button',
+        { id: someId, className: 'button' },
+        '+1'
     )
 );
 
+console.log(templateTwo);
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

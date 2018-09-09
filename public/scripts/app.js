@@ -1,38 +1,20 @@
 'use strict';
 
-var toggleVisibility = function toggleVisibility() {
-    visibility = !visibility;
-    renderApp();
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/*Making website that sells cars
+Each car has a make, model, and vin
+We also want to have a getDescription()
+ */
+
+var Person = function Person(name) {
+    _classCallCheck(this, Person);
+
+    this.name = name || 'test';
 };
 
-var visibility = false;
+var me = new Person('Idrin ELba');
+console.log(me);
 
-//JSX - Javascript XML extension provided to us by react, not native to javascript
-var renderApp = function renderApp() {
-    var template = React.createElement(
-        'div',
-        null,
-        React.createElement(
-            'h1',
-            null,
-            'Visibility Toggle'
-        ),
-        React.createElement(
-            'button',
-            { onClick: toggleVisibility },
-            visibility ? 'Hide details' : 'Show details'
-        ),
-        visibility && React.createElement(
-            'div',
-            null,
-            React.createElement(
-                'p',
-                null,
-                'Hey. These are some details you can see now!'
-            )
-        )
-    );
-
-    ReactDOM.render(template, document.getElementById('app'));
-};
-renderApp();
+var other = new Person();
+console.log(other);

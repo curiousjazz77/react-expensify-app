@@ -41,8 +41,12 @@ var user = {
     location: 'NY'
 };
 
-function getLocation() {
-    return 'Unknown';
+function getLocation(location) {
+    if (location) {
+        return location;
+    } else {
+        return 'Unknown';
+    }
 }
 
 //Dynamic injection
@@ -64,7 +68,7 @@ var templateTwo = React.createElement(
         'p',
         null,
         'Location: ',
-        getLocation()
+        getLocation(user.location)
     )
 );
 

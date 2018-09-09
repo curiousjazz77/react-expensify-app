@@ -22,8 +22,13 @@ var user = {
     location: 'NY'
 }
 
-function getLocation(){
-    return 'Unknown';
+function getLocation(location){
+    if (location){
+        return location
+    }
+    else {
+        return 'Unknown';
+    }
 }
 
 //Dynamic injection
@@ -31,7 +36,7 @@ var templateTwo = (
     <div>
         <h1>{user.name + '!'}</h1>
         <p>Age: {user.age}</p>
-        <p>Location: {getLocation()}</p>
+        <p>Location: {getLocation(user.location)}</p>
     </div>
 );
 

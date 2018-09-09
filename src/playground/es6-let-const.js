@@ -11,10 +11,14 @@ console.log('nameLet', nameLet);
 const nameConst = 'Juno';
 console.log('nameConst', nameConst);
 
-function getPetName(){
-    var petaName = 'Hal'; //scoped to this function
-    return petName;
-}
+// Block scoping
 
-getPetName();
-console.log(petName);
+const fullName = 'Idrin Elba';
+let firstName;
+
+//parse for last name
+if (fullName){
+    firstName = fullName.split(' ')[0];
+    console.log(firstName);
+}
+console.log(firstName)

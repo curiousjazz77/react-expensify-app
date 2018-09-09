@@ -24,13 +24,22 @@ let count = 0;
 const addOne = () => {
     console.log('addOne');
 };
+const minusOne = () => {
+    console.log('minusOne');
+};
+
+const reset = () => {
+    console.log('reset');
+};
 //needs to be called className instead of class in JSX
 const templateTwo = (
     <div>
         <h1>Count: {count}</h1>
-        <button onClick={ () => {
-            console.log('some value here');
-        }}>+1</button>
+        <button onClick={addOne}>+1</button>
+        <p></p>
+        <button onClick={minusOne}>-1</button>
+        <p></p>
+        <button onClick={reset}>0</button>
     </div>
 );
 

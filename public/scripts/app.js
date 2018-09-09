@@ -46,6 +46,13 @@ var count = 0;
 var addOne = function addOne() {
     console.log('addOne');
 };
+var minusOne = function minusOne() {
+    console.log('minusOne');
+};
+
+var reset = function reset() {
+    console.log('reset');
+};
 //needs to be called className instead of class in JSX
 var templateTwo = React.createElement(
     'div',
@@ -58,10 +65,20 @@ var templateTwo = React.createElement(
     ),
     React.createElement(
         'button',
-        { onClick: function onClick() {
-                console.log('some value here');
-            } },
+        { onClick: addOne },
         '+1'
+    ),
+    React.createElement('p', null),
+    React.createElement(
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    React.createElement('p', null),
+    React.createElement(
+        'button',
+        { onClick: reset },
+        '0'
     )
 );
 

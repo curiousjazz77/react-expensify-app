@@ -3,7 +3,7 @@ class IndecisionApp extends React.Component {
     render() {
         return (
             <div>
-                <Header />
+                <Header title="Test value" />
                 <Action />
                 <Options />
                 <AddOption />
@@ -14,9 +14,10 @@ class IndecisionApp extends React.Component {
 
 class Header extends React.Component {
     render() {
+        console.log(this.props);
         return (
             <div>
-                <h1>Indecision</h1>
+                <h1>{this.props.title}</h1>
                 <h2>Put your life in the hands of a computer</h2>
             </div>
         );

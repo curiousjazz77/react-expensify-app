@@ -10,6 +10,7 @@ We also want to have a getDescription()
  */
 
 var Person = function () {
+    //data to be passed in
     function Person() {
         var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
         var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -36,7 +37,7 @@ var Person = function () {
     return Person;
 }();
 
-var me = new Person('Idrin ELba');
+var me = new Person('Idrin ELba', 27);
 console.log(me);
 console.log(me.getGreeting());
 console.log(me.getDescription());

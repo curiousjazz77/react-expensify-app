@@ -4,6 +4,7 @@ We also want to have a getDescription()
  */
 
 class Person {
+    //data to be passed in
     constructor(name = 'Anonymous', age = 0) {
         this.name = name;
         this.age = age;
@@ -17,7 +18,7 @@ class Person {
     }
 }
 
-const me = new Person('Idrin ELba');
+const me = new Person('Idrin ELba', 27);
 console.log(me);
 console.log(me.getGreeting());
 console.log(me.getDescription());

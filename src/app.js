@@ -1,25 +1,5 @@
 console.log('App.js is running!');
 
-const user = {
-    name: 'Idrin',
-    age: 23,
-    location: 'Cincinnati'
-}
-
-function getLocation(location){
-    if (location){
-        return <p>Location: {location}</p>;
-    }
-}
-
-//Dynamic injection
-const templateTwo = (
-    <div>
-        <h1>{user.name ? user.name : 'Anonymous'}</h1>
-        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-        {getLocation(user.location)}
-    </div>
-);
 
 const app = {
     title: 'Indecision app',
@@ -30,9 +10,9 @@ const app = {
 //JSX - Javascript XML extension provided to us by react, not native to javascript
 const template = (
     <div>
-        <h1>{(app.title) ? app.title+ '!': 'Null'}</h1>
+        <h1>{(app.title) ? app.title + '!' : 'Null'}</h1>
         {(app.subtitle) ? <p>{app.subtitle}</p> : 'Null'}
-        <p>{app.options.length > 0 ? 'Here are your options': 'No options'}</p>
+        <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
         <ol>
             <li>Item one</li>
             <li>Item two</li>
@@ -40,13 +20,17 @@ const template = (
     </div>
 );
 
-const templateThree = (
+let count = 0;
+const someId = 'myidhere';
+//needs to be called className instead of class in JSX
+const templateTwo = (
     <div>
-        <h1>{(app.title) ? app.title+ '!': 'Null'}</h1>
-        <p>{(app.subtitle) ? app.subtitle : 'Null'}</p>
+        <h1>Count: {count}</h1>
+        <button id={someId} className ="button">+1</button>
     </div>
 );
 
+console.log(templateTwo);
 const appRoot = document.getElementById('app')
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

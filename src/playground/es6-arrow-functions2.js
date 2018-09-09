@@ -28,9 +28,9 @@ console.log(user.printPlacesLives());
 
 const multiplier = {
     numbers : [3, 4, 5],
+    multiplier : 2,
     multiplyNumbers() {
-        let multiplier = 2;
-        return this.numbers.map((number) => number * multiplier);
+        return this.numbers.map((number) => number * this.multiplier);
     }
 
 

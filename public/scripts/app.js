@@ -5,36 +5,6 @@ console.log('App.js is running!');
 //Create app object title/subtitle
 
 
-//JSX - Javascript XML extension provided to us by react, not native to javascript
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Indecision App'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'This is some info'
-    ),
-    React.createElement(
-        'ol',
-        null,
-        React.createElement(
-            'li',
-            null,
-            ' Item one'
-        ),
-        React.createElement(
-            'li',
-            null,
-            ' Item two'
-        )
-    )
-);
-
 var user = {
     name: 'Idrin',
     age: 23,
@@ -70,10 +40,45 @@ var templateTwo = React.createElement(
     getLocation(user.location)
 );
 
-var titleSubtitle = {
+var app = {
     title: 'Indecision app',
-    subtitle: 'Put your choices in the hands of a computer'
-};
+    subtitle: 'Put your choices in the hands of a computer',
+    options: ['One', 'Two']
+
+    //JSX - Javascript XML extension provided to us by react, not native to javascript
+};var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title ? app.title + '!' : 'Null'
+    ),
+    app.subtitle ? React.createElement(
+        'p',
+        null,
+        app.subtitle
+    ) : 'Null',
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options'
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'Item one'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item two'
+        )
+    )
+);
 
 var templateThree = React.createElement(
     'div',
@@ -81,15 +86,15 @@ var templateThree = React.createElement(
     React.createElement(
         'h1',
         null,
-        titleSubtitle.title ? titleSubtitle.title + '!' : 'Null'
+        app.title ? app.title + '!' : 'Null'
     ),
     React.createElement(
         'p',
         null,
-        titleSubtitle.subtitle ? titleSubtitle.subtitle : 'Null'
+        app.subtitle ? app.subtitle : 'Null'
     )
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateThree, appRoot);
+ReactDOM.render(template, appRoot);

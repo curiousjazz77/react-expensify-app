@@ -38,7 +38,7 @@ var template = React.createElement(
 var user = {
     name: 'Idrin',
     age: 23,
-    location: 'NY'
+    location: 'Cincinnati'
 };
 
 function getLocation(location) {
@@ -81,15 +81,15 @@ var templateThree = React.createElement(
     React.createElement(
         'h1',
         null,
-        titleSubtitle.title + '!'
+        titleSubtitle.title ? titleSubtitle.title + '!' : 'Null'
     ),
     React.createElement(
         'p',
         null,
-        titleSubtitle.subtitle
+        titleSubtitle.subtitle ? titleSubtitle.subtitle : 'Null'
     )
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(templateThree, appRoot);

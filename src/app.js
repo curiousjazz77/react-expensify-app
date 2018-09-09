@@ -19,7 +19,7 @@ var template = (
 var user = {
     name: 'Idrin',
     age: 23,
-    location: 'NY'
+    location: 'Cincinnati'
 }
 
 function getLocation(location){
@@ -44,11 +44,11 @@ var titleSubtitle = {
 
 var templateThree = (
     <div>
-        <h1>{titleSubtitle.title+ '!'}</h1>
-        <p>{titleSubtitle.subtitle}</p>
+        <h1>{(titleSubtitle.title) ? titleSubtitle.title+ '!': 'Null'}</h1>
+        <p>{(titleSubtitle.subtitle) ? titleSubtitle.subtitle : 'Null'}</p>
     </div>
 );
 
 var appRoot = document.getElementById('app')
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(templateThree, appRoot);

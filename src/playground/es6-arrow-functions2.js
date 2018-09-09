@@ -1,11 +1,11 @@
 //arguments object - no longer bound with arrow functions
 
-const add = function (a, b){
+const add = function (a, b) {
     console.log(arguments)
     return a + b;
 };
 
-const addArrow = (a, b) =>{
+const addArrow = (a, b) => {
     //console.log(arguments) //Uncaught ReferenceError: arguments is not defined
     return a + b;
 };
@@ -18,15 +18,11 @@ console.log(addArrow(20, 1));
 const user = {
     name: 'Idrin',
     cities: ['Philadelphia', 'Chicago', 'Cincinnati'],
-    printPlacesLives: function (){
-        // console.log(this.name)
-        // console.log(this.cities)
-        const that = this;
+    printPlacesLives() {
 
-        //Cannot read property 'name' of undefined
-        this.cities.forEach(function (city) {
-           console.log(that.name + 'has lived in ' + city);
+        return this.cities.map((city) => {
+            return this.name + ' has lived in ' + city;
         });
     }
 };
-user.printPlacesLives();
+console.log(user.printPlacesLives());

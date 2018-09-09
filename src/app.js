@@ -14,20 +14,27 @@ const onFormSubmit = (e) => {
       app.options.push(option);
       e.target.elements.option.value = '';
   }
-  renderCounterApp();
+  renderApp();
   console.log("form submitted")
+};
+
+const onRemoveAll = () => {
+    app.options = []
+    renderApp();
+    console.log('remove');
 };
 
 const appRoot = document.getElementById('app');
 
 //JSX - Javascript XML extension provided to us by react, not native to javascript
-const renderCounterApp = () => {
+const renderApp = () => {
     const template = (
         <div>
             <h1>{(app.title) ? app.title + '!' : 'Null'}</h1>
             {(app.subtitle) ? <p>{app.subtitle}</p> : 'Null'}
             <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
             <p>{app.options.length}</p>
+            <button onClick={onRemoveAll}>Remove All</button>
             <ol>
                 <li>Item one</li>
                 <li>Item two</li>
@@ -41,7 +48,7 @@ const renderCounterApp = () => {
 
     ReactDOM.render(template, appRoot);
 };
-renderCounterApp();
+renderApp();
 
 
 

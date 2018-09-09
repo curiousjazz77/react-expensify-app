@@ -15,14 +15,20 @@ var onFormSubmit = function onFormSubmit(e) {
         app.options.push(option);
         e.target.elements.option.value = '';
     }
-    renderCounterApp();
+    renderApp();
     console.log("form submitted");
+};
+
+var onRemoveAll = function onRemoveAll() {
+    app.options = [];
+    renderApp();
+    console.log('remove');
 };
 
 var appRoot = document.getElementById('app');
 
 //JSX - Javascript XML extension provided to us by react, not native to javascript
-var renderCounterApp = function renderCounterApp() {
+var renderApp = function renderApp() {
     var template = React.createElement(
         'div',
         null,
@@ -45,6 +51,11 @@ var renderCounterApp = function renderCounterApp() {
             'p',
             null,
             app.options.length
+        ),
+        React.createElement(
+            'button',
+            { onClick: onRemoveAll },
+            'Remove All'
         ),
         React.createElement(
             'ol',
@@ -74,4 +85,4 @@ var renderCounterApp = function renderCounterApp() {
 
     ReactDOM.render(template, appRoot);
 };
-renderCounterApp();
+renderApp();

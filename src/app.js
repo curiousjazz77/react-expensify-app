@@ -36,6 +36,7 @@ const renderApp = () => {
             <p>{app.options.length}</p>
             <button onClick={onRemoveAll}>Remove All</button>
             {
+                //JSX behind the scenes optimizes the rendering process
                 [<p key="1">a</p>, <p key="2">b</p>, <p key="3">c</p>]
             }
 

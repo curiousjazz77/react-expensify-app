@@ -57,6 +57,8 @@ var renderApp = function renderApp() {
             { onClick: onRemoveAll },
             'Remove All'
         ),
+
+        //JSX behind the scenes optimizes the rendering process
         [React.createElement(
             'p',
             { key: '1' },

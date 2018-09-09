@@ -19,8 +19,14 @@ const user = {
     name: 'Idrin',
     cities: ['Philadelphia', 'Chicago', 'Cincinnati'],
     printPlacesLives: function (){
-        console.log(this.name)
-        console.log(this.cities)
+        // console.log(this.name)
+        // console.log(this.cities)
+        const that = this;
+
+        //Cannot read property 'name' of undefined
+        this.cities.forEach(function (city) {
+           console.log(that.name + 'has lived in ' + city);
+        });
     }
 };
 user.printPlacesLives();

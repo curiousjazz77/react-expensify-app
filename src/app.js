@@ -1,9 +1,11 @@
 //React components extend react and have to be title case
 class IndecisionApp extends React.Component {
     render() {
+        const title = 'Indecision App';
+        const subtitle = 'Put your life in the hands of a computer';
         return (
             <div>
-                <Header title="Test value" />
+                <Header title={title} subtitle={subtitle}/>
                 <Action />
                 <Options />
                 <AddOption />
@@ -14,11 +16,10 @@ class IndecisionApp extends React.Component {
 
 class Header extends React.Component {
     render() {
-        console.log(this.props);
         return (
             <div>
                 <h1>{this.props.title}</h1>
-                <h2>Put your life in the hands of a computer</h2>
+                <h2>{this.props.subtitle}</h2>
             </div>
         );
     }

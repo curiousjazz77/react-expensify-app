@@ -46,8 +46,13 @@ const renderApp = () => {
             }
 
             <ol>
-                <li>Item one</li>
-                <li>Item two</li>
+                {
+                    //JSX behind the scenes optimizes the rendering process
+                    app.options.map((option) => {
+                        return <li key={option}>Option: {option} </li>
+                    })
+                }
+
             </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>

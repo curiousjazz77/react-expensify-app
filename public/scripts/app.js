@@ -73,16 +73,17 @@ var renderApp = function renderApp() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item one'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item two'
-            )
+
+            //JSX behind the scenes optimizes the rendering process
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    'Option: ',
+                    option,
+                    ' '
+                );
+            })
         ),
         React.createElement(
             'form',

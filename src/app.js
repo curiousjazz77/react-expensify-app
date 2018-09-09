@@ -21,8 +21,11 @@ const template = (
 );
 
 let count = 0;
+//JSX doesn't have built in data binding
 const addOne = () => {
-    console.log('addOne');
+    count++;
+    renderCounterApp();
+    console.log('addOne', count);
 };
 const minusOne = () => {
     console.log('minusOne');
@@ -31,19 +34,21 @@ const minusOne = () => {
 const reset = () => {
     console.log('reset');
 };
-//needs to be called className instead of class in JSX
-const templateTwo = (
-    <div>
-        <h1>Count: {count}</h1>
-        <button onClick={addOne}>+1</button>
-        <p></p>
-        <button onClick={minusOne}>-1</button>
-        <p></p>
-        <button onClick={reset}>0</button>
-    </div>
-);
 
-console.log(templateTwo);
 const appRoot = document.getElementById('app')
 
-ReactDOM.render(templateTwo, appRoot);
+const renderCounterApp = () => {
+    //needs to be called className instead of class in JSX
+    const templateTwo = (
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={addOne}>+1</button>
+            <button onClick={minusOne}>-1</button>
+            <button onClick={reset}>0</button>
+        </div>
+    );
+
+    ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();

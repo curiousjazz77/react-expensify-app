@@ -43,8 +43,11 @@ var app = {
 );
 
 var count = 0;
+//JSX doesn't have built in data binding
 var addOne = function addOne() {
-    console.log('addOne');
+    count++;
+    renderCounterApp();
+    console.log('addOne', count);
 };
 var minusOne = function minusOne() {
     console.log('minusOne');
@@ -53,36 +56,38 @@ var minusOne = function minusOne() {
 var reset = function reset() {
     console.log('reset');
 };
-//needs to be called className instead of class in JSX
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Count: ',
-        count
-    ),
-    React.createElement(
-        'button',
-        { onClick: addOne },
-        '+1'
-    ),
-    React.createElement('p', null),
-    React.createElement(
-        'button',
-        { onClick: minusOne },
-        '-1'
-    ),
-    React.createElement('p', null),
-    React.createElement(
-        'button',
-        { onClick: reset },
-        '0'
-    )
-);
 
-console.log(templateTwo);
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+var renderCounterApp = function renderCounterApp() {
+    //needs to be called className instead of class in JSX
+    var templateTwo = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            'Count: ',
+            count
+        ),
+        React.createElement(
+            'button',
+            { onClick: addOne },
+            '+1'
+        ),
+        React.createElement(
+            'button',
+            { onClick: minusOne },
+            '-1'
+        ),
+        React.createElement(
+            'button',
+            { onClick: reset },
+            '0'
+        )
+    );
+
+    ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();

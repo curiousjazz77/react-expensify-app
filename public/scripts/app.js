@@ -39,9 +39,14 @@ var user = {
     name: 'Idrin',
     age: 27,
     location: 'NY'
+};
 
-    //Dynamic injection
-};var templateTwo = React.createElement(
+function getLocation() {
+    return 'Unknown';
+}
+
+//Dynamic injection
+var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
@@ -59,7 +64,7 @@ var user = {
         'p',
         null,
         'Location: ',
-        user.location
+        getLocation()
     )
 );
 
@@ -85,4 +90,4 @@ var templateThree = React.createElement(
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateThree, appRoot);
+ReactDOM.render(templateTwo, appRoot);

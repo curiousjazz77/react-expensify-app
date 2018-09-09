@@ -1,3 +1,14 @@
+const obj = {
+    name: 'Vik',
+    getName() {
+        return this.name;
+    }
+};
+
+const getName = obj.getName.bind(obj);
+
+console.log(getName);
+
 //React components extend react and have to be title case
 class IndecisionApp extends React.Component {
     render() {
@@ -6,10 +17,10 @@ class IndecisionApp extends React.Component {
         const options = ['Thing one', 'Thing two', 'Thing three'];
         return (
             <div>
-                <Header title={title} subtitle={subtitle} />
-                <Action />
-                <Options options={options} />
-                <AddOption />
+                <Header title={title} subtitle={subtitle}/>
+                <Action/>
+                <Options options={options}/>
+                <AddOption/>
             </div>
         );
     }
@@ -27,7 +38,7 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
-    handlePick(){
+    handlePick() {
         alert('handlePick');
     }
 
@@ -43,9 +54,11 @@ class Action extends React.Component {
 //Options component
 
 class Options extends React.Component {
-    handleRemove(){
-        alert('handleRemove');
+    handleRemove() {
+        console.log(this.props.options)
+        // alert('handleRemove');
     }
+
     render() {
         return (
             <div>
@@ -71,14 +84,15 @@ class Option extends React.Component {
 //AddOption Component
 
 class AddOption extends React.Component {
-    handleActionOption(e){
+    handleActionOption(e) {
 
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
-        if (option){
+        if (option) {
             alert(option);
         }
     }
+
     render() {
         return (
             <div>

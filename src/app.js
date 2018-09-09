@@ -26,9 +26,6 @@ function getLocation(location){
     if (location){
         return <p>Location: {location}</p>;
     }
-    else {
-        return undefined;
-    }
 }
 
 //Dynamic injection

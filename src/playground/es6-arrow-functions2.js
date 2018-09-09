@@ -23,3 +23,17 @@ const user = {
     }
 };
 console.log(user.printPlacesLives());
+
+//Challenge
+
+const multiplier = {
+    numbers : [3, 4, 5],
+    multiplyNumbers() {
+        let multiplier = 2;
+        return this.numbers.map((number) => number * multiplier);
+    }
+
+
+};
+
+console.log(multiplier.multiplyNumbers());

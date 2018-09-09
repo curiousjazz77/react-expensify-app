@@ -63,6 +63,7 @@ var reset = function reset() {
 
 var appRoot = document.getElementById('app');
 
+//now has real time data binding
 var renderCounterApp = function renderCounterApp() {
     //needs to be called className instead of class in JSX
     var templateTwo = React.createElement(

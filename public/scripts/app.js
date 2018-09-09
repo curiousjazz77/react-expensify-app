@@ -2,9 +2,6 @@
 
 console.log('App.js is running!');
 
-//Create app object title/subtitle
-
-
 var user = {
     name: 'Idrin',
     age: 23,

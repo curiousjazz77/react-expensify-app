@@ -1,10 +1,6 @@
 console.log('App.js is running!');
 
-//Create app object title/subtitle
-
-
-
-var user = {
+const user = {
     name: 'Idrin',
     age: 23,
     location: 'Cincinnati'
@@ -17,7 +13,7 @@ function getLocation(location){
 }
 
 //Dynamic injection
-var templateTwo = (
+const templateTwo = (
     <div>
         <h1>{user.name ? user.name : 'Anonymous'}</h1>
         {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
@@ -25,14 +21,14 @@ var templateTwo = (
     </div>
 );
 
-var app = {
+const app = {
     title: 'Indecision app',
     subtitle: 'Put your choices in the hands of a computer',
     options: ['One', 'Two']
 }
 
 //JSX - Javascript XML extension provided to us by react, not native to javascript
-var template = (
+const template = (
     <div>
         <h1>{(app.title) ? app.title+ '!': 'Null'}</h1>
         {(app.subtitle) ? <p>{app.subtitle}</p> : 'Null'}
@@ -44,13 +40,13 @@ var template = (
     </div>
 );
 
-var templateThree = (
+const templateThree = (
     <div>
         <h1>{(app.title) ? app.title+ '!': 'Null'}</h1>
         <p>{(app.subtitle) ? app.subtitle : 'Null'}</p>
     </div>
 );
 
-var appRoot = document.getElementById('app')
+const appRoot = document.getElementById('app')
 
 ReactDOM.render(template, appRoot);

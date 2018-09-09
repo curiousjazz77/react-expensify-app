@@ -12,10 +12,12 @@ We also want to have a getDescription()
 var Person = function () {
     function Person() {
         var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
         _classCallCheck(this, Person);
 
         this.name = name;
+        this.age = age;
     }
 
     _createClass(Person, [{
@@ -23,6 +25,11 @@ var Person = function () {
         value: function getGreeting() {
             // return 'Hi. I am '+ this.name + '!';
             return 'Hi. I am ' + this.name + ' !';
+        }
+    }, {
+        key: 'getDescription',
+        value: function getDescription() {
+            return this.name + ' is ' + this.age + ' year(s) old.';
         }
     }]);
 
@@ -32,7 +39,9 @@ var Person = function () {
 var me = new Person('Idrin ELba');
 console.log(me);
 console.log(me.getGreeting());
+console.log(me.getDescription());
 
 var other = new Person();
 console.log(other);
 console.log(other.getGreeting());
+console.log(other.getDescription());

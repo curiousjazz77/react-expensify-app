@@ -80,20 +80,34 @@ class Header extends React.Component {
     }
 }
 
+//converting Action to stateless component from class based stateful one
+const Action = (props) => {
+    return (
+        <div>
+            <button
+                onClick={props.handlePick}
+                disabled={!props.hasOptions}
+            >
+                What should I do?
+            </button>
+        </div>
+    );
+};
+
 //lets someone know when they hit the button
-class Action extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <button onClick={this.props.handlePick} disabled={!this.props.hasOptions}>
-
-                    What should I do?
-                </button>
-            </div>
-        )
-    }
-}
+// class Action extends React.Component {
+//
+//     render() {
+//         return (
+//             <div>
+//                 <button onClick={this.props.handlePick} disabled={!this.props.hasOptions}>
+//
+//                     What should I do?
+//                 </button>
+//             </div>
+//         )
+//     }
+// }
 
 //Options component
 
@@ -158,14 +172,14 @@ class AddOption extends React.Component {
 }
 
 //stateless functional component; faster that stateful ones
-const User = (props) => {
-    return (
-        <div>
-            <p>Name: {props.name}</p>
-            <p>Age: {props.age}</p>
+// const User = (props) => {
+//     return (
+//         <div>
+//             <p>Name: {props.name}</p>
+//             <p>Age: {props.age}</p>
+//
+//         </div>
+//     );
+// };
 
-        </div>
-    );
-};
-
-ReactDOM.render(<User name="Idrin" age={26}/>, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));

@@ -38,7 +38,7 @@ class Counter extends React.Component {
         console.log('handleMinusOne');
     }
     handleReset() {
-        this.setState((previousState) => {
+        this.setState(() => {
             return {
                 count: 0
             };

@@ -66,21 +66,6 @@ var Counter = function (_React$Component) {
                     count: 0
                 };
             });
-            this.setState(function (previousState) {
-                return { //will get batched with the previous call
-                    //takes previous state as 0, which the DOM just saw
-                    count: previousState.count + 1
-                };
-            });
-            //pitfall example
-            //     this.setState( {
-            //         count: 0
-            //     });
-            //     this.setState({ //issue this and the previous statement are asynchronous.
-            //         count: this.state.count + 1 //accesses stale, outdated data
-            //     });
-            //     console.log('handleReset');
-            //
         }
     }, {
         key: 'render',

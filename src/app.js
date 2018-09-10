@@ -68,17 +68,25 @@ class IndecisionApp extends React.Component {
         );
     }
 }
+const Header = (props) => {
+    return (
+        <div>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
+        </div>
+    );
+};
 
-class Header extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
-                <h2>{this.props.subtitle}</h2>
-            </div>
-        );
-    }
-}
+// class Header extends React.Component {
+//     render() {
+//         return (
+//             <div>
+//                 <h1>{this.props.title}</h1>
+//                 <h2>{this.props.subtitle}</h2>
+//             </div>
+//         );
+//     }
+// }
 
 //converting Action to stateless component from class based stateful one
 const Action = (props) => {
@@ -111,29 +119,46 @@ const Action = (props) => {
 
 //Options component
 
-class Options extends React.Component {
+const Options = (props) => {
+    return (
+        <div>
+            <button onClick={props.handleDeleteOptions}>Remove all</button>
+            {
+                props.options.map((option) => <Option key={option} optionText={option}/>)
+            }
+        </div>
+    );
+};
+// class Options extends React.Component {
+//
+//     render() {
+//         return (
+//             <div>
+//                 <button onClick={this.props.handleDeleteOptions}>Remove all</button>
+//                 {
+//                     this.props.options.map((option) => <Option key={option} optionText={option}/>)
+//                 }
+//             </div>
+//         )
+//     }
+// }
+const Option = (props) => {
+    return (
+        <div>
+            Option: {props.optionText}
+        </div>
+    );
+};
 
-    render() {
-        return (
-            <div>
-                <button onClick={this.props.handleDeleteOptions}>Remove all</button>
-                {
-                    this.props.options.map((option) => <Option key={option} optionText={option}/>)
-                }
-            </div>
-        )
-    }
-}
-
-class Option extends React.Component {
-    render() {
-        return (
-            <div>
-                Option: {this.props.optionText}
-            </div>
-        )
-    }
-}
+// class Option extends React.Component {
+//     render() {
+//         return (
+//             <div>
+//                 Option: {this.props.optionText}
+//             </div>
+//         )
+//     }
+// }
 
 //AddOption Component
 //doesn't make sense for this behavior to live in the parent

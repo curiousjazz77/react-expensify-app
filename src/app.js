@@ -7,25 +7,34 @@ class IndecisionApp extends React.Component {
         super(props);
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
         this.handlePick = this.handlePick.bind(this);
+        this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
             options: ['Thing one', 'Thing two', 'Thing four'] //default options
         };
     }
     //It's valid for a parent to pass down new prop values, but props is read only in the options component
     //THis is why wiping the array causes all the options to go away
-    handleDeleteOptions(){
+    handleDeleteOptions() {
         this.setState(() => {
             return {
                 options: []
             };
         });
     }
+    //Look at Mozilla developer network to look at array concatenation
     handlePick() {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
         alert(option);
-        console.log(randomNum);
     }
+    handleAddOption(option){
+        this.setState((prevState) => {
+            return {
+                options: prevState.options.concat(option)
+            };
+        });
+    }
+
     render() {
         const title = 'Indecision App';
         const subtitle = 'Put your life in the hands of a computer';
@@ -38,8 +47,11 @@ class IndecisionApp extends React.Component {
                 />
                 <Options
                     options={this.state.options}
-                    handleDeleteOptions={this.handleDeleteOptions}/>
-                <AddOption/>
+                    handleDeleteOptions={this.handleDeleteOptions}
+                />
+                <AddOption
+                    handleAddOption={this.handleAddOption}
+                />
             </div>
         );
     }
@@ -98,21 +110,26 @@ class Option extends React.Component {
 }
 
 //AddOption Component
-
+//doesn't make sense for this behavior to live in the parent
 class AddOption extends React.Component {
-    handleActionOption(e) {
-
+    constructor(props) {
+        super(props);
+        this.handleAddOption = this.handleAddOption.bind(this);
+    }
+    handleAddOption(e) { //first handle add option passed in from this component
         e.preventDefault();
+
         const option = e.target.elements.option.value.trim();
+
         if (option) {
-            alert(option);
+            this.props.handleAddOption(option); //passed down from parent
         }
     }
 
     render() {
         return (
             <div>
-                <form onSubmit={this.handleActionOption}>
+                <form onSubmit={this.handleAddOption}>
                     <input type="text" name="option"/>
                     <button>Add option</button>
                 </form>

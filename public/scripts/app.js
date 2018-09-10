@@ -21,6 +21,7 @@ var IndecisionApp = function (_React$Component) {
 
         _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
         _this.handlePick = _this.handlePick.bind(_this);
+        _this.handleAddOption = _this.handleAddOption.bind(_this);
         _this.state = {
             options: ['Thing one', 'Thing two', 'Thing four'] //default options
         };
@@ -39,13 +40,23 @@ var IndecisionApp = function (_React$Component) {
                 };
             });
         }
+        //Look at Mozilla developer network to look at array concatenation
+
     }, {
         key: 'handlePick',
         value: function handlePick() {
             var randomNum = Math.floor(Math.random() * this.state.options.length);
             var option = this.state.options[randomNum];
             alert(option);
-            console.log(randomNum);
+        }
+    }, {
+        key: 'handleAddOption',
+        value: function handleAddOption(option) {
+            this.setState(function (prevState) {
+                return {
+                    options: prevState.options.concat(option)
+                };
+            });
         }
     }, {
         key: 'render',
@@ -62,8 +73,11 @@ var IndecisionApp = function (_React$Component) {
                 }),
                 React.createElement(Options, {
                     options: this.state.options,
-                    handleDeleteOptions: this.handleDeleteOptions }),
-                React.createElement(AddOption, null)
+                    handleDeleteOptions: this.handleDeleteOptions
+                }),
+                React.createElement(AddOption, {
+                    handleAddOption: this.handleAddOption
+                })
             );
         }
     }]);
@@ -190,24 +204,31 @@ var Option = function (_React$Component5) {
 }(React.Component);
 
 //AddOption Component
+//doesn't make sense for this behavior to live in the parent
+
 
 var AddOption = function (_React$Component6) {
     _inherits(AddOption, _React$Component6);
 
-    function AddOption() {
+    function AddOption(props) {
         _classCallCheck(this, AddOption);
 
-        return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+        var _this6 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+
+        _this6.handleAddOption = _this6.handleAddOption.bind(_this6);
+        return _this6;
     }
 
     _createClass(AddOption, [{
-        key: 'handleActionOption',
-        value: function handleActionOption(e) {
-
+        key: 'handleAddOption',
+        value: function handleAddOption(e) {
+            //first handle add option passed in from this component
             e.preventDefault();
+
             var option = e.target.elements.option.value.trim();
+
             if (option) {
-                alert(option);
+                this.props.handleAddOption(option); //passed down from parent
             }
         }
     }, {
@@ -218,7 +239,7 @@ var AddOption = function (_React$Component6) {
                 null,
                 React.createElement(
                     'form',
-                    { onSubmit: this.handleActionOption },
+                    { onSubmit: this.handleAddOption },
                     React.createElement('input', { type: 'text', name: 'option' }),
                     React.createElement(
                         'button',

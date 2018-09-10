@@ -20,11 +20,15 @@ var IndecisionApp = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
         _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
+        _this.handlePick = _this.handlePick.bind(_this);
         _this.state = {
             options: ['Thing one', 'Thing two', 'Thing four'] //default options
         };
         return _this;
     }
+    //It's valid for a parent to pass down new prop values, but props is read only in the options component
+    //THis is why wiping the array causes all the options to go away
+
 
     _createClass(IndecisionApp, [{
         key: 'handleDeleteOptions',
@@ -36,6 +40,14 @@ var IndecisionApp = function (_React$Component) {
             });
         }
     }, {
+        key: 'handlePick',
+        value: function handlePick() {
+            var randomNum = Math.floor(Math.random() * this.state.options.length);
+            var option = this.state.options[randomNum];
+            alert(option);
+            console.log(randomNum);
+        }
+    }, {
         key: 'render',
         value: function render() {
             var title = 'Indecision App';
@@ -44,8 +56,12 @@ var IndecisionApp = function (_React$Component) {
                 'div',
                 null,
                 React.createElement(Header, { title: title, subtitle: subtitle }),
-                React.createElement(Action, { hasOptions: this.state.options.length > 0 }),
-                React.createElement(Options, { options: this.state.options,
+                React.createElement(Action, {
+                    hasOptions: this.state.options.length > 0,
+                    handlePick: this.handlePick
+                }),
+                React.createElement(Options, {
+                    options: this.state.options,
                     handleDeleteOptions: this.handleDeleteOptions }),
                 React.createElement(AddOption, null)
             );
@@ -87,6 +103,9 @@ var Header = function (_React$Component2) {
     return Header;
 }(React.Component);
 
+//lets someone know when they hit the button
+
+
 var Action = function (_React$Component3) {
     _inherits(Action, _React$Component3);
 
@@ -97,11 +116,6 @@ var Action = function (_React$Component3) {
     }
 
     _createClass(Action, [{
-        key: 'handlePick',
-        value: function handlePick() {
-            alert('handlePick');
-        }
-    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -109,7 +123,7 @@ var Action = function (_React$Component3) {
                 null,
                 React.createElement(
                     'button',
-                    { onClick: this.handlePick, disabled: !this.props.hasOptions },
+                    { onClick: this.props.handlePick, disabled: !this.props.hasOptions },
                     'What should I do?'
                 )
             );

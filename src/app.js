@@ -6,11 +6,13 @@ class IndecisionApp extends React.Component {
     constructor(props){
         super(props);
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+        this.handlePick = this.handlePick.bind(this);
         this.state = {
             options: ['Thing one', 'Thing two', 'Thing four'] //default options
         };
     }
-
+    //It's valid for a parent to pass down new prop values, but props is read only in the options component
+    //THis is why wiping the array causes all the options to go away
     handleDeleteOptions(){
         this.setState(() => {
             return {
@@ -18,15 +20,25 @@ class IndecisionApp extends React.Component {
             };
         });
     }
+    handlePick() {
+        const randomNum = Math.floor(Math.random() * this.state.options.length);
+        const option = this.state.options[randomNum];
+        alert(option);
+        console.log(randomNum);
+    }
     render() {
         const title = 'Indecision App';
         const subtitle = 'Put your life in the hands of a computer';
         return (
             <div>
                 <Header title={title} subtitle={subtitle} />
-                <Action hasOptions={this.state.options.length > 0}/>
-                <Options options={this.state.options}
-                handleDeleteOptions={this.handleDeleteOptions}/>
+                <Action
+                    hasOptions={this.state.options.length > 0}
+                    handlePick={this.handlePick}
+                />
+                <Options
+                    options={this.state.options}
+                    handleDeleteOptions={this.handleDeleteOptions}/>
                 <AddOption/>
             </div>
         );
@@ -44,15 +56,13 @@ class Header extends React.Component {
     }
 }
 
+//lets someone know when they hit the button
 class Action extends React.Component {
-    handlePick() {
-        alert('handlePick');
-    }
 
     render() {
         return (
             <div>
-                <button onClick={this.handlePick} disabled={!this.props.hasOptions} >
+                <button onClick={this.props.handlePick} disabled={!this.props.hasOptions} >
 
                     What should I do?
                 </button>

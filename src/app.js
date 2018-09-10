@@ -1,5 +1,6 @@
 //React components extend react and have to be title case
 //Component state allows us to manage objects. Components re-render with updates
+//We are using 4 stateless components, making the application slightly faster and easier to work with
 
 class IndecisionApp extends React.Component {
     constructor(props) {
@@ -77,17 +78,6 @@ const Header = (props) => {
     );
 };
 
-// class Header extends React.Component {
-//     render() {
-//         return (
-//             <div>
-//                 <h1>{this.props.title}</h1>
-//                 <h2>{this.props.subtitle}</h2>
-//             </div>
-//         );
-//     }
-// }
-
 //converting Action to stateless component from class based stateful one
 const Action = (props) => {
     return (
@@ -102,23 +92,6 @@ const Action = (props) => {
     );
 };
 
-//lets someone know when they hit the button
-// class Action extends React.Component {
-//
-//     render() {
-//         return (
-//             <div>
-//                 <button onClick={this.props.handlePick} disabled={!this.props.hasOptions}>
-//
-//                     What should I do?
-//                 </button>
-//             </div>
-//         )
-//     }
-// }
-
-//Options component
-
 const Options = (props) => {
     return (
         <div>
@@ -129,19 +102,7 @@ const Options = (props) => {
         </div>
     );
 };
-// class Options extends React.Component {
-//
-//     render() {
-//         return (
-//             <div>
-//                 <button onClick={this.props.handleDeleteOptions}>Remove all</button>
-//                 {
-//                     this.props.options.map((option) => <Option key={option} optionText={option}/>)
-//                 }
-//             </div>
-//         )
-//     }
-// }
+
 const Option = (props) => {
     return (
         <div>
@@ -150,15 +111,6 @@ const Option = (props) => {
     );
 };
 
-// class Option extends React.Component {
-//     render() {
-//         return (
-//             <div>
-//                 Option: {this.props.optionText}
-//             </div>
-//         )
-//     }
-// }
 
 //AddOption Component
 //doesn't make sense for this behavior to live in the parent

@@ -38,10 +38,17 @@ class Counter extends React.Component {
         console.log('handleMinusOne');
     }
     handleReset() {
-        this.setState(() => {
-            return {
-                count: 0
-            };
+        // this.setState(() => {
+        //     return {
+        //         count: 0
+        //     };
+        // });
+
+        this.setState( {
+            count: 0
+        });
+        this.setState({ //issue this and the previous statement are asynchronous.
+            count: this.state.count + 1 //accesses stale, outdated data
         });
         console.log('handleReset');
     }

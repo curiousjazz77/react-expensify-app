@@ -61,10 +61,17 @@ var Counter = function (_React$Component) {
     }, {
         key: 'handleReset',
         value: function handleReset() {
-            this.setState(function () {
-                return {
-                    count: 0
-                };
+            // this.setState(() => {
+            //     return {
+            //         count: 0
+            //     };
+            // });
+
+            this.setState({
+                count: 0
+            });
+            this.setState({ //issue this and the previous statement are asynchronous.
+                count: this.state.count + 1 //accesses stale, outdated data
             });
             console.log('handleReset');
         }

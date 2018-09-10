@@ -1,5 +1,7 @@
 
 //React components extend react and have to be title case
+//Component state allows us to manage objects. Components re-render with updates
+
 class IndecisionApp extends React.Component {
     render() {
         const title = 'Indecision App';

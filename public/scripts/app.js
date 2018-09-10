@@ -8,6 +8,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/*
+We need to do the following:
+1. Set up a default state object
+2. Component rendered with default state values *
+3. Change state based on event
+4. Component re-rendered using new state values *
+5. Start again at 3
+ */
+
 var Counter = function (_React$Component) {
     _inherits(Counter, _React$Component);
 
@@ -20,23 +29,43 @@ var Counter = function (_React$Component) {
         _this.handleAddOne = _this.handleAddOne.bind(_this); //run once and not rebound over and over
         _this.handleMinusOne = _this.handleMinusOne.bind(_this); //run once and not rebound over and over
         _this.handleReset = _this.handleReset.bind(_this); //run once and not rebound over and over
-
+        _this.state = {
+            count: 0,
+            name: 'Julie'
+        };
         return _this;
     }
 
     _createClass(Counter, [{
         key: 'handleAddOne',
         value: function handleAddOne() {
+            //call method on component instance to get it to change
+            //can't simply do a reassignment of counter because component won't re-render
+            this.setState(function (previousState) {
+                return {
+                    count: previousState.count + 1
+                };
+            });
             console.log('handleAddOne');
         }
     }, {
         key: 'handleMinusOne',
         value: function handleMinusOne() {
+            this.setState(function (previousState) {
+                return {
+                    count: previousState.count - 1
+                };
+            });
             console.log('handleMinusOne');
         }
     }, {
         key: 'handleReset',
         value: function handleReset() {
+            this.setState(function (previousState) {
+                return {
+                    count: 0
+                };
+            });
             console.log('handleReset');
         }
     }, {
@@ -48,7 +77,8 @@ var Counter = function (_React$Component) {
                 React.createElement(
                     'h1',
                     null,
-                    'Count: 123'
+                    'Count: ',
+                    this.state.count
                 ),
                 React.createElement(
                     'button',

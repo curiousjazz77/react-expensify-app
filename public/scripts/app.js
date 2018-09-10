@@ -27,6 +27,7 @@ var IndecisionApp = function (_React$Component) {
         };
         return _this;
     }
+
     //It's valid for a parent to pass down new prop values, but props is read only in the options component
     //THis is why wiping the array causes all the options to go away
 
@@ -40,6 +41,7 @@ var IndecisionApp = function (_React$Component) {
                 };
             });
         }
+
         //Look at Mozilla developer network to look at array concatenation
 
     }, {
@@ -272,4 +274,26 @@ var AddOption = function (_React$Component6) {
     return AddOption;
 }(React.Component);
 
-ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));
+//stateless functional component; faster that stateful ones
+
+
+var User = function User(props) {
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'p',
+            null,
+            'Name: ',
+            props.name
+        ),
+        React.createElement(
+            'p',
+            null,
+            'Age: ',
+            props.age
+        )
+    );
+};
+
+ReactDOM.render(React.createElement(User, { name: 'Idrin', age: 26 }), document.getElementById('app'));

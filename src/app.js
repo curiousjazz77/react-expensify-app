@@ -1,13 +1,3 @@
-const obj = {
-    name: 'Vik',
-    getName() {
-        return this.name;
-    }
-};
-
-const getName = obj.getName.bind(obj);
-
-console.log(getName);
 
 //React components extend react and have to be title case
 class IndecisionApp extends React.Component {
@@ -54,7 +44,13 @@ class Action extends React.Component {
 //Options component
 
 class Options extends React.Component {
-    handleRemove() {
+    constructor(props){
+        super(props); //bare minimum if u want to override constructor behavior
+        this.handleRemoveAll = this.handleRemoveAll.bind(this); //run once and not rebound over and over
+
+    }
+
+    handleRemoveAll() {
         console.log(this.props.options)
         // alert('handleRemove');
     }
@@ -62,7 +58,7 @@ class Options extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.handleRemove}>Remove all</button>
+                <button onClick={this.handleRemoveAll.bind(this)}>Remove all</button>
                 {
                     this.props.options.map((option) => <Option key={option} optionText={option}/>)
                 }

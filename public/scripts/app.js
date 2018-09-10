@@ -72,12 +72,11 @@ var IndecisionApp = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var title = 'Indecision App';
             var subtitle = 'Put your life in the hands of a computer';
             return React.createElement(
                 'div',
                 null,
-                React.createElement(Header, { title: title, subtitle: subtitle }),
+                React.createElement(Header, { subtitle: subtitle }),
                 React.createElement(Action, {
                     hasOptions: this.state.options.length > 0,
                     handlePick: this.handlePick
@@ -113,8 +112,11 @@ var Header = function Header(props) {
     );
 };
 
-//converting Action to stateless component from class based stateful one
-var Action = function Action(props) {
+Header.defaultProps = {
+    title: 'Indecision App'
+
+    //converting Action to stateless component from class based stateful one
+};var Action = function Action(props) {
     return React.createElement(
         'div',
         null,

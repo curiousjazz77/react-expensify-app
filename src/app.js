@@ -5,9 +5,18 @@
 class IndecisionApp extends React.Component {
     constructor(props){
         super(props);
+        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
         this.state = {
-            options: [] //['Thing one', 'Thing two', 'Thing four'] //default options
+            options: ['Thing one', 'Thing two', 'Thing four'] //default options
         };
+    }
+
+    handleDeleteOptions(){
+        this.setState(() => {
+            return {
+                options: []
+            };
+        });
     }
     render() {
         const title = 'Indecision App';
@@ -16,7 +25,8 @@ class IndecisionApp extends React.Component {
             <div>
                 <Header title={title} subtitle={subtitle} />
                 <Action hasOptions={this.state.options.length > 0}/>
-                <Options options={this.state.options} />
+                <Options options={this.state.options}
+                handleDeleteOptions={this.handleDeleteOptions}/>
                 <AddOption/>
             </div>
         );
@@ -54,21 +64,11 @@ class Action extends React.Component {
 //Options component
 
 class Options extends React.Component {
-    constructor(props){
-        super(props); //bare minimum if u want to override constructor behavior
-        this.handleRemoveAll = this.handleRemoveAll.bind(this); //run once and not rebound over and over
-
-    }
-
-    handleRemoveAll() {
-        console.log(this.props.options)
-        // alert('handleRemove');
-    }
 
     render() {
         return (
             <div>
-                <button onClick={this.handleRemoveAll.bind(this)}>Remove all</button>
+                <button onClick={this.props.handleDeleteOptions}>Remove all</button>
                 {
                     this.props.options.map((option) => <Option key={option} optionText={option}/>)
                 }

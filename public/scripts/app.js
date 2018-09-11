@@ -64,6 +64,12 @@ var IndecisionApp = function (_React$Component) {
             console.log('component will unmount!');
         }
 
+        //localStorage:
+        // localStorage.setItem('name', 'And');
+        // undefined
+        // localStorage.getItem('name');
+        // "And"
+
         //It's valid for a parent to pass down new prop values, but props is read only in the options component
         //THis is why wiping the array causes all the options to go away
 

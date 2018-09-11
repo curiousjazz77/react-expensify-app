@@ -83,6 +83,8 @@ console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */](4,5));
 
 
 
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* default */](67));
+
 // console.log(isAdult(12));
 // console.log(isAdult(18));
 // console.log(isAdult(21));
@@ -118,13 +120,14 @@ const add = (a, b) =>  a + b;
 "use strict";
 /* unused harmony export isAdult */
 /* unused harmony export canDrink */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isSenior; });
 console.log('person.js is running');
 //these are named exports
 const isAdult = (age) =>  age >= 18 ;
 const canDrink = (age) =>  age >= 21;
 
+const isSenior = (age) =>  age >= 65;
 
-// export {name: 'Andrew'}'' WRONG
 
 
 

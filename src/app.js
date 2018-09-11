@@ -16,14 +16,14 @@ class IndecisionApp extends React.Component {
     /*only accessible in class based components
     * no way to access lifecycle in stateless functional components*/
     componentDidMount(){ //called internally on react side so get spelling right
-        console.log('component did mount!')
+        console.log('fetching data')
     }
 
     /*fires up after state values or prop values change
     * comes in handy when you need to figure out when
     * your component has changed*/
     componentDidUpdate(prevProps, prevState){ //called internally on react side so get spelling right
-        console.log('component did update!')
+        console.log('saving data')
     }
 
     /*we won't see this used in our app like the other method

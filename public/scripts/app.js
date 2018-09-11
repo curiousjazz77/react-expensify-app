@@ -37,7 +37,7 @@ var IndecisionApp = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             //called internally on react side so get spelling right
-            console.log('component did mount!');
+            console.log('fetching data');
         }
 
         /*fires up after state values or prop values change
@@ -48,7 +48,7 @@ var IndecisionApp = function (_React$Component) {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
             //called internally on react side so get spelling right
-            console.log('component did update!');
+            console.log('saving data');
         }
 
         /*we won't see this used in our app like the other method

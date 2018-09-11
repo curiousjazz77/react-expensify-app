@@ -36,11 +36,18 @@ class IndecisionApp extends React.Component {
         console.log('component will unmount!')
     }
 
-    //localStorage: only works with string data...not objects and arrays. SO we can use JSON!!
+    /*localStorage: only works with string data...not objects and arrays. SO we can use JSON!!
     // localStorage.setItem('name', 'And');
     // undefined
     // localStorage.getItem('name');
     // "And"
+
+    const json = JSON.stringify({age: 26})
+    JSON.parse(json)
+    JSON.parse(json).age
+    >Object {age: 26}
+    26
+    */
 
     //It's valid for a parent to pass down new prop values, but props is read only in the options component
     //THis is why wiping the array causes all the options to go away

@@ -125,9 +125,6 @@ class IndecisionApp extends React.Component {
     }
 }
 
-IndecisionApp.defaultProps = {
-    options: []
-};
 
 //Stateless functional component
 //sped up because it doesn't have to manage lifecycle

@@ -118,6 +118,7 @@ IndecisionApp.defaultProps = {
 };
 
 //Stateless functional component
+//sped up because it doesn't have to manage lifecycle
 var Header = function Header(props) {
     return React.createElement(
         'div',

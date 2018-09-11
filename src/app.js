@@ -81,6 +81,7 @@ IndecisionApp.defaultProps = {
 };
 
 //Stateless functional component
+//sped up because it doesn't have to manage lifecycle
 const Header = (props) => {
     return (
         <div>

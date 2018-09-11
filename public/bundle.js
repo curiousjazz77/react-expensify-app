@@ -77,14 +77,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  //proper syntax
 
 console.log('app.js is running!');
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* square */](4));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["c" /* square */](4));
 console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](4,5));
-console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](12));
-console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](18));
-console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](21));
-console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](12));
-console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](21));
-console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](25));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */](4,5));
+
+
+
+// console.log(isAdult(12));
+// console.log(isAdult(18));
+// console.log(isAdult(21));
+// console.log(canDrink(12));
+// console.log(canDrink(21));
+// console.log(canDrink(25));
 
 
 /***/ }),
@@ -92,17 +96,17 @@ console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](25));
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return square; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return square; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return subtract; });
 console.log('utils.js is running');
 //these are named exports
 const square = (x) =>  x * x;
 const add = (a, b) =>  a + b;
 const subtract = (a, b) =>  a - b;
-/* unused harmony export subtract */
-
 
 // export {name: 'Andrew'}'' WRONG
+
 
 
 
@@ -111,8 +115,8 @@ const subtract = (a, b) =>  a - b;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isAdult; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return canDrink; });
+/* unused harmony export isAdult */
+/* unused harmony export canDrink */
 console.log('person.js is running');
 //these are named exports
 const isAdult = (age) =>  age >= 18 ;

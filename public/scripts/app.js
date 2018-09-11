@@ -30,11 +30,16 @@ var IndecisionApp = function (_React$Component) {
         return _this;
     }
 
-    //It's valid for a parent to pass down new prop values, but props is read only in the options component
-    //THis is why wiping the array causes all the options to go away
-
-
     _createClass(IndecisionApp, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            //called internally on react side so get spelling right
+            console.log('component did mount!');
+        }
+        //It's valid for a parent to pass down new prop values, but props is read only in the options component
+        //THis is why wiping the array causes all the options to go away
+
+    }, {
         key: 'handleDeleteOptions',
         value: function handleDeleteOptions() {
             this.setState(function () {

@@ -13,7 +13,9 @@ class IndecisionApp extends React.Component {
             options: props.options //default options
         };
     }
-
+    componentDidMount(){ //called internally on react side so get spelling right
+        console.log('component did mount!')
+    }
     //It's valid for a parent to pass down new prop values, but props is read only in the options component
     //THis is why wiping the array causes all the options to go away
     handleDeleteOptions() {

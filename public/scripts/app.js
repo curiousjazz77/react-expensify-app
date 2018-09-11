@@ -48,7 +48,9 @@ var IndecisionApp = function (_React$Component) {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
             //called internally on react side so get spelling right
-            console.log('saving data');
+            if (prevState.options.length !== this.state.options.length) {
+                console.log('saving data');
+            }
         }
 
         /*we won't see this used in our app like the other method

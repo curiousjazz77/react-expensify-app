@@ -23,7 +23,9 @@ class IndecisionApp extends React.Component {
     * comes in handy when you need to figure out when
     * your component has changed*/
     componentDidUpdate(prevProps, prevState){ //called internally on react side so get spelling right
-        console.log('saving data')
+        if (prevState.options.length !== this.state.options.length) {
+            console.log('saving data')
+        }
     }
 
     /*we won't see this used in our app like the other method

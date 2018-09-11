@@ -13,6 +13,8 @@ class IndecisionApp extends React.Component {
             options: props.options //default options
         };
     }
+    /*only accessible in class based components
+    * no way to access lifecycle in stateless react components*/
     componentDidMount(){ //called internally on react side so get spelling right
         console.log('component did mount!')
     }

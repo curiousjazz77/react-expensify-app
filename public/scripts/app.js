@@ -29,6 +29,9 @@ var IndecisionApp = function (_React$Component) {
         };
         return _this;
     }
+    /*only accessible in class based components
+    * no way to access lifecycle in stateless react components*/
+
 
     _createClass(IndecisionApp, [{
         key: 'componentDidMount',

@@ -20,7 +20,8 @@ class IndecisionApp extends React.Component {
     }
 
     /*fires up after state values or prop values change
-    * comes in handy*/
+    * comes in handy when you need to figure out when
+    * your component has changed*/
     componentDidUpdate(){ //called internally on react side so get spelling right
         console.log('component did update!')
     }

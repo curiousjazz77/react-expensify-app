@@ -41,7 +41,8 @@ var IndecisionApp = function (_React$Component) {
         }
 
         /*fires up after state values or prop values change
-        * comes in handy*/
+        * comes in handy when you need to figure out when
+        * your component has changed*/
 
     }, {
         key: 'componentDidUpdate',

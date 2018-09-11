@@ -10,7 +10,7 @@ class IndecisionApp extends React.Component {
         this.handleAddOption = this.handleAddOption.bind(this);
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
         this.state = {
-            options: props.options //default options
+            options: [] //default options
         };
     }
     /*only accessible in class based components

@@ -25,7 +25,7 @@ var IndecisionApp = function (_React$Component) {
         _this.handleAddOption = _this.handleAddOption.bind(_this);
         _this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
         _this.state = {
-            options: props.options //default options
+            options: [] //default options
         };
         return _this;
     }

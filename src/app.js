@@ -22,9 +22,14 @@ class IndecisionApp extends React.Component {
     /*fires up after state values or prop values change
     * comes in handy when you need to figure out when
     * your component has changed*/
-    componentDidUpdate(){ //called internally on react side so get spelling right
+    componentDidUpdate(prevProps, prevState){ //called internally on react side so get spelling right
         console.log('component did update!')
     }
+
+    componentWillUnmount(){
+        console.log('component will unmount!')
+    }
+
     //It's valid for a parent to pass down new prop values, but props is read only in the options component
     //THis is why wiping the array causes all the options to go away
     handleDeleteOptions() {

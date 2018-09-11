@@ -46,10 +46,16 @@ var IndecisionApp = function (_React$Component) {
 
     }, {
         key: 'componentDidUpdate',
-        value: function componentDidUpdate() {
+        value: function componentDidUpdate(prevProps, prevState) {
             //called internally on react side so get spelling right
             console.log('component did update!');
         }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            console.log('component will unmount!');
+        }
+
         //It's valid for a parent to pass down new prop values, but props is read only in the options component
         //THis is why wiping the array causes all the options to go away
 

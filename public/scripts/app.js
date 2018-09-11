@@ -30,7 +30,7 @@ var IndecisionApp = function (_React$Component) {
         return _this;
     }
     /*only accessible in class based components
-    * no way to access lifecycle in stateless react components*/
+    * no way to access lifecycle in stateless functional components*/
 
 
     _createClass(IndecisionApp, [{
@@ -117,6 +117,7 @@ IndecisionApp.defaultProps = {
     options: []
 };
 
+//Stateless functional component
 var Header = function Header(props) {
     return React.createElement(
         'div',

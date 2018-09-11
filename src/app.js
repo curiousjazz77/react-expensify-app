@@ -14,7 +14,7 @@ class IndecisionApp extends React.Component {
         };
     }
     /*only accessible in class based components
-    * no way to access lifecycle in stateless react components*/
+    * no way to access lifecycle in stateless functional components*/
     componentDidMount(){ //called internally on react side so get spelling right
         console.log('component did mount!')
     }
@@ -80,6 +80,7 @@ IndecisionApp.defaultProps = {
     options: []
 };
 
+//Stateless functional component
 const Header = (props) => {
     return (
         <div>

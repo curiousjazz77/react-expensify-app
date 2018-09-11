@@ -26,6 +26,12 @@ class IndecisionApp extends React.Component {
         console.log('component did update!')
     }
 
+    /*we won't see this used in our app like the other method
+    * for instance, you can see how it works in the console
+    * Use this to replace app with this paragraph tag:
+    * ReactDOM.render(React.createElement('p'), document.getElementById('app'));
+    * Then, component will unmount fires.
+    * */
     componentWillUnmount(){
         console.log('component will unmount!')
     }

@@ -38,7 +38,7 @@ var Counter = function (_React$Component) {
     _createClass(Counter, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var stringCount = localStorage.getItem('count)');
+            var stringCount = localStorage.getItem('count');
             var count = parseInt(stringCount, 10);
 
             if (!isNaN(count)) {

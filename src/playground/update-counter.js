@@ -15,9 +15,11 @@ class Counter extends React.Component {
         this.handleMinusOne = this.handleMinusOne.bind(this); //run once and not rebound over and over
         this.handleReset = this.handleReset.bind(this); //run once and not rebound over and over
         this.state = {
-            count: props.count,
-            name: 'Julie'
+            count: 0
         };
+    }
+    componentDidUpdate(prevProps, prevState){
+        console.log('Component did update')
     }
     handleAddOne() {
         //call method on component instance to get it to change
@@ -56,8 +58,5 @@ class Counter extends React.Component {
     }
 }
 
-Counter.defaultProps = {
-    count: 0
-};
 
 ReactDOM.render(<Counter />, document.getElementById('app'));

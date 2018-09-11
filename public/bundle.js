@@ -712,7 +712,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-console.log(__WEBPACK_IMPORTED_MODULE_0_validator___default.a.isEmail('test'));
+console.log(__WEBPACK_IMPORTED_MODULE_0_validator___default.a.isEmail('test@gmail.com'));
 
 /***/ }),
 /* 17 */

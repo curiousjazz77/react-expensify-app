@@ -8,84 +8,283 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-/*
-We need to do the following:
-1. Set up a default state object
-2. Component rendered with default state values *
-3. Change state based on event
-4. Component re-rendered using new state values *
-5. Start again at 3
- */
+//React components extend react and have to be title case
+//Component state allows us to manage objects. Components re-render with updates
+//We are using 4 stateless components, making the application slightly faster and easier to work with
 
-var Counter = function (_React$Component) {
-    _inherits(Counter, _React$Component);
+var IndecisionApp = function (_React$Component) {
+    _inherits(IndecisionApp, _React$Component);
 
-    function Counter(props) {
-        _classCallCheck(this, Counter);
+    function IndecisionApp(props) {
+        _classCallCheck(this, IndecisionApp);
 
-        //bare minimum if u want to override constructor behavior
-        var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
-        _this.handleAddOne = _this.handleAddOne.bind(_this); //run once and not rebound over and over
-        _this.handleMinusOne = _this.handleMinusOne.bind(_this); //run once and not rebound over and over
-        _this.handleReset = _this.handleReset.bind(_this); //run once and not rebound over and over
+        _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
+        _this.handlePick = _this.handlePick.bind(_this);
+        _this.handleAddOption = _this.handleAddOption.bind(_this);
+        _this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
         _this.state = {
-            count: 0
+            options: [] //default options
         };
         return _this;
     }
+    /*only accessible in class based components
+    * no way to access lifecycle in stateless functional components*/
 
-    _createClass(Counter, [{
+
+    _createClass(IndecisionApp, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var stringCount = localStorage.getItem('count');
-            var count = parseInt(stringCount, 10);
+            //called internally on react side so get spelling right
 
-            if (!isNaN(count)) {
-                //no need for else
-                this.setState(function () {
-                    return { count: count };
-                });
+            try {
+                var json = localStorage.getItem('options');
+                var options = JSON.parse(json);
+
+                if (options) {
+                    this.setState(function () {
+                        return { options: options };
+                    });
+                }
+            } catch (e) {
+                //if things go wrong - Do nothing at all is json data invalid. we fall back to previous array
             }
         }
+
+        /*fires up after state values or prop values change
+        * comes in handy when you need to figure out when
+        * your component has changed
+        * Saves to local storage each time
+        * Use localStorage.getItem('options') to retrieve from console*/
+
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
-            if (prevState.count !== this.state.count) {
-                localStorage.setItem('count', this.state.count);
+            //called internally on react side so get spelling right
+            if (prevState.options.length !== this.state.options.length) {
+                var json = JSON.stringify(this.state.options);
+                localStorage.setItem('options', json);
+                console.log('saving data');
             }
-            console.log('Component did update');
         }
+
+        /*we won't see this used in our app like the other method
+        * for instance, you can see how it works in the console
+        * Use this to replace app with this paragraph tag:
+        * ReactDOM.render(React.createElement('p'), document.getElementById('app'));
+        * Then, component will unmount fires.
+        * */
+
     }, {
-        key: 'handleAddOne',
-        value: function handleAddOne() {
-            //call method on component instance to get it to change
-            //can't simply do a reassignment of counter because component won't re-render
-            this.setState(function (previousState) {
-                return {
-                    count: previousState.count + 1
-                };
-            });
-            console.log('handleAddOne');
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            console.log('component will unmount!');
         }
+
+        /*localStorage: only works with string data...not objects and arrays. SO we can use JSON!!
+        // localStorage.setItem('name', 'And');
+        // undefined
+        // localStorage.getItem('name');
+        // "And"
+         const json = JSON.stringify({age: 26})
+        JSON.parse(json)
+        JSON.parse(json).age
+        >Object {age: 26}
+        26
+        */
+
+        //It's valid for a parent to pass down new prop values, but props is read only in the options component
+        //THis is why wiping the array causes all the options to go away
+
     }, {
-        key: 'handleMinusOne',
-        value: function handleMinusOne() {
-            this.setState(function (previousState) {
-                return {
-                    count: previousState.count - 1
-                };
-            });
-            console.log('handleMinusOne');
-        }
-    }, {
-        key: 'handleReset',
-        value: function handleReset() {
+        key: 'handleDeleteOptions',
+        value: function handleDeleteOptions() {
             this.setState(function () {
+                return { options: [] };
+            });
+        }
+    }, {
+        key: 'handleDeleteOption',
+        value: function handleDeleteOption(optionToRemove) {
+            this.setState(function (prevState) {
                 return {
-                    count: 0
+                    options: prevState.options.filter(function (option) {
+                        return optionToRemove !== option;
+                    })
                 };
             });
+        }
+
+        //Look at Mozilla developer network to look at array concatenation
+
+    }, {
+        key: 'handlePick',
+        value: function handlePick() {
+            var randomNum = Math.floor(Math.random() * this.state.options.length);
+            var option = this.state.options[randomNum];
+            alert(option);
+        }
+    }, {
+        key: 'handleAddOption',
+        value: function handleAddOption(option) {
+
+            if (!option) {
+                return 'Enter valid value to add item';
+            } else if (this.state.options.indexOf(option) > -1) {
+                return 'This option already exists';
+            }
+            //equivalent to an else clause
+            this.setState(function (prevState) {
+                return {
+                    options: prevState.options.concat(option)
+                };
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var subtitle = 'Put your life in the hands of a computer';
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(Header, { subtitle: subtitle }),
+                React.createElement(Action, {
+                    hasOptions: this.state.options.length > 0,
+                    handlePick: this.handlePick
+                }),
+                React.createElement(Options, {
+                    options: this.state.options,
+                    handleDeleteOptions: this.handleDeleteOptions,
+                    handleDeleteOption: this.handleDeleteOption
+                }),
+                React.createElement(AddOption, {
+                    handleAddOption: this.handleAddOption
+                })
+            );
+        }
+    }]);
+
+    return IndecisionApp;
+}(React.Component);
+
+//Stateless functional component
+//sped up because it doesn't have to manage lifecycle
+
+
+var Header = function Header(props) {
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            props.title
+        ),
+        props.subtitle && React.createElement(
+            'h2',
+            null,
+            props.subtitle
+        )
+    );
+};
+
+Header.defaultProps = {
+    title: 'Indecision App'
+
+    //converting Action to stateless component from class based stateful one
+};var Action = function Action(props) {
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'button',
+            {
+                onClick: props.handlePick,
+                disabled: !props.hasOptions
+            },
+            'What should I do?'
+        )
+    );
+};
+
+var Options = function Options(props) {
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'button',
+            { onClick: props.handleDeleteOptions },
+            'Remove all'
+        ),
+        props.options.length === 0 && React.createElement(
+            'p',
+            null,
+            'Please add an option to get started!'
+        ),
+        props.options.map(function (option) {
+            return React.createElement(Option, {
+                key: option,
+                optionText: option,
+                handleDeleteOption: props.handleDeleteOption
+            });
+        })
+    );
+};
+
+var Option = function Option(props) {
+    return React.createElement(
+        'div',
+        null,
+        props.optionText,
+        React.createElement(
+            'button',
+            {
+                onClick: function onClick(e) {
+                    props.handleDeleteOption(props.optionText);
+                }
+            },
+            'remove'
+        )
+    );
+};
+
+//AddOption Component
+//doesn't make sense for this behavior to live in the parent
+
+var AddOption = function (_React$Component2) {
+    _inherits(AddOption, _React$Component2);
+
+    function AddOption(props) {
+        _classCallCheck(this, AddOption);
+
+        var _this2 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+
+        _this2.handleAddOption = _this2.handleAddOption.bind(_this2);
+        _this2.state = {
+            error: undefined
+        };
+        return _this2;
+    }
+
+    _createClass(AddOption, [{
+        key: 'handleAddOption',
+        value: function handleAddOption(e) {
+            //first handle add option passed in from this component
+            e.preventDefault();
+
+            var option = e.target.elements.option.value.trim();
+            var error = this.props.handleAddOption(option);
+
+            //we will use component state starting here
+            this.setState(function () {
+                return { error: error };
+            });
+
+            if (!error) {
+                //if user doesn't strike an error, clear the input (wipe it)
+                e.target.elements.option.value = '';
+            }
         }
     }, {
         key: 'render',
@@ -93,32 +292,37 @@ var Counter = function (_React$Component) {
             return React.createElement(
                 'div',
                 null,
-                React.createElement(
-                    'h1',
+                this.state.error && React.createElement(
+                    'p',
                     null,
-                    'Count: ',
-                    this.state.count
+                    this.state.error
                 ),
                 React.createElement(
-                    'button',
-                    { onClick: this.handleAddOne },
-                    '+1'
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this.handleMinusOne },
-                    '-1'
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this.handleReset },
-                    'reset'
+                    'form',
+                    { onSubmit: this.handleAddOption },
+                    React.createElement('input', { type: 'text', name: 'option' }),
+                    React.createElement(
+                        'button',
+                        null,
+                        'Add option'
+                    )
                 )
             );
         }
     }]);
 
-    return Counter;
+    return AddOption;
 }(React.Component);
 
-ReactDOM.render(React.createElement(Counter, null), document.getElementById('app'));
+//stateless functional component; faster that stateful ones
+// const User = (props) => {
+//     return (
+//         <div>
+//             <p>Name: {props.name}</p>
+//             <p>Age: {props.age}</p>
+//
+//         </div>
+//     );
+// };
+
+ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));

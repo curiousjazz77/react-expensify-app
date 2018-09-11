@@ -277,6 +277,11 @@ var AddOption = function (_React$Component2) {
             this.setState(function () {
                 return { error: error };
             });
+
+            if (!error) {
+                //if user doesn't strike an error, clear the input (wipe it)
+                e.target.elements.option.value = '';
+            }
         }
     }, {
         key: 'render',

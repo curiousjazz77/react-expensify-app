@@ -210,6 +210,10 @@ class AddOption extends React.Component {
 
         //we will use component state starting here
         this.setState(() => ({error}));
+
+        if (!error){ //if user doesn't strike an error, clear the input (wipe it)
+            e.target.elements.option.value = '';
+        }
     }
 
     render() {

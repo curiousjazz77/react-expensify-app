@@ -41,7 +41,11 @@ var Counter = function (_React$Component) {
             var stringCount = localStorage.getItem('count)');
             var count = parseInt(stringCount, 10);
 
-            if (!isNaN(count)) {}
+            if (!isNaN(count)) {
+                this.setState(function () {
+                    return { count: count };
+                });
+            }
         }
     }, {
         key: 'componentDidUpdate',

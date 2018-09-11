@@ -24,7 +24,7 @@ class Counter extends React.Component {
         const count = parseInt(stringCount, 10);
 
         if (!isNaN(count)){
-
+            this.setState(() => ({count}));
         }
     }
     componentDidUpdate(prevProps, prevState){

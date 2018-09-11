@@ -36,7 +36,7 @@ class IndecisionApp extends React.Component {
         console.log('component will unmount!')
     }
 
-    //localStorage:
+    //localStorage: only works with string data...not objects and arrays. SO we can use JSON!!
     // localStorage.setItem('name', 'And');
     // undefined
     // localStorage.getItem('name');

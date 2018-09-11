@@ -42,13 +42,17 @@ var IndecisionApp = function (_React$Component) {
 
         /*fires up after state values or prop values change
         * comes in handy when you need to figure out when
-        * your component has changed*/
+        * your component has changed
+        * Saves to local storage each time
+        * Use localStorage.getItem('options') to retrieve from console*/
 
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
             //called internally on react side so get spelling right
             if (prevState.options.length !== this.state.options.length) {
+                var json = JSON.stringify(this.state.options);
+                localStorage.setItem('options', json);
                 console.log('saving data');
             }
         }

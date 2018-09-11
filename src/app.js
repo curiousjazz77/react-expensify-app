@@ -16,7 +16,11 @@ class IndecisionApp extends React.Component {
     /*only accessible in class based components
     * no way to access lifecycle in stateless functional components*/
     componentDidMount(){ //called internally on react side so get spelling right
-        console.log('fetching data')
+        const json = localStorage.getItem('options');
+        const options = JSON.parse(json)
+
+        this.setState(() => ({options}))
+
     }
 
     /*fires up after state values or prop values change

@@ -37,7 +37,12 @@ var IndecisionApp = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             //called internally on react side so get spelling right
-            console.log('fetching data');
+            var json = localStorage.getItem('options');
+            var options = JSON.parse(json);
+
+            this.setState(function () {
+                return { options: options };
+            });
         }
 
         /*fires up after state values or prop values change

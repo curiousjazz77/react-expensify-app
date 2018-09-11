@@ -70,13 +70,22 @@
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__person_js__ = __webpack_require__(2);
 // import './utils.js';
 
+ //proper syntax
  //proper syntax
 
 console.log('app.js is running!');
 console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* square */](4));
 console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](4,5));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](12));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](18));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](21));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](12));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](21));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](25));
+
 
 /***/ }),
 /* 1 */
@@ -86,9 +95,29 @@ console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](4,5));
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return square; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
 console.log('utils.js is running');
-//there are default exports and named exports
+//these are named exports
 const square = (x) =>  x * x;
 const add = (a, b) =>  a + b;
+const subtract = (a, b) =>  a - b;
+/* unused harmony export subtract */
+
+
+// export {name: 'Andrew'}'' WRONG
+
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isAdult; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return canDrink; });
+console.log('person.js is running');
+//these are named exports
+const isAdult = (x) =>  x >= 18 ;
+const canDrink = (x) =>  x >= 21;
+
 
 // export {name: 'Andrew'}'' WRONG
 

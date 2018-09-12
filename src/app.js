@@ -26,6 +26,11 @@ console.log(getGreeting());
 
 class NewSyntax {
     name = 'Jen'; //done without needing constructor
+    getGreeting = () => {
+        return `Hi. My name is ${this.name}.`;
+    }
 }
 const newSyntax = new NewSyntax();
 console.log(newSyntax);
+const newGetGreeting = newSyntax.getGreeting;
+console.log(newGetGreeting());

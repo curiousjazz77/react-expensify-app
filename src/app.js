@@ -9,3 +9,11 @@ import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp';
 //here we are in charge of only bootstrapping things that live elsewhere
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+
+class OldSyntax {
+    constructor(){
+        this.name = 'Mike';
+    }
+}
+const oldSyntax = new OldSyntax();
+console.log(oldSyntax);

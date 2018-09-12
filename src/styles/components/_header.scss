@@ -7,6 +7,20 @@
 
 //problem using this: nesting and specificity issues.
 //we want to avoif callback hell and nesting
-h1 {
-  color: red;
+//h1 {
+//  color: red;
+//}
+
+//BEM naming convntion - block element modifier
+//getbem.com
+.header__title{ //naming convention, no special meaning
+  font-size: 3.2rem;
+  margin: 0;
+}
+
+.header__subtitle{ //naming convention, no special meaning
+  color: #a5afd7;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0;
 }

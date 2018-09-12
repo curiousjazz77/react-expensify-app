@@ -15,7 +15,10 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/
         }]
-    }
+    },
+    //make source maps work
+    //webpack.js.org/configuration/devtool/#devtool
+    devtool: 'cheap-module-eval-source-map'
 };
 
 // loader

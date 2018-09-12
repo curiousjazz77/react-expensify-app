@@ -1,0 +1,10 @@
+//widget Header
+
+//class selector
+.widget-header {
+background: $blue;
+  color: $light-purple;
+  display: flex;
+  justify-content: space-between;
+  padding: $m-size;
+}

@@ -6,6 +6,7 @@
 }
 
 //problem using this: nesting and specificity issues.
-h1 { 
+//we want to avoif callback hell and nesting
+h1 {
   color: red;
 }

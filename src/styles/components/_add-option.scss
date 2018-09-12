@@ -16,5 +16,11 @@
 }
 
 .add-option__input {
+  background: $dark-blue;
+  border: none;
+  color: $light-purple;
+  border-bottom: .3rem solid darken($dark-blue, 10%);
   flex-grow: 1;
+  margin-right: $s-size;
+  padding: $s-size;
 }

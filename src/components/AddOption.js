@@ -5,9 +5,7 @@ import React from 'react';
 export default class AddOption extends React.Component {
     state = {
         error: undefined
-
     };
-
     handleAddOption = (e) => { //first handle add option passed in from this component
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
@@ -19,7 +17,7 @@ export default class AddOption extends React.Component {
         if (!error){ //if user doesn't strike an error, clear the input (wipe it)
             e.target.elements.option.value = '';
         }
-    }
+    };
 
     render() {
         return (

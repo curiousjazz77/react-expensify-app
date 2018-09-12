@@ -9,16 +9,9 @@ import AddOption from "./AddOption";
 //We are using 4 stateless components, making the application slightly faster and easier to work with
 
 export default class IndecisionApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.state = {
-            options: [] //default options
-        };
-    }
+    state = {
+        options: []
+    };
     /*only accessible in class based components
     * no way to access lifecycle in stateless functional components*/
     componentDidMount(){ //called internally on react side so get spelling right
@@ -75,24 +68,24 @@ export default class IndecisionApp extends React.Component {
 
     //It's valid for a parent to pass down new prop values, but props is read only in the options component
     //THis is why wiping the array causes all the options to go away
-    handleDeleteOptions() {
+    handleDeleteOptions = () => {
         this.setState(() => ({ options: [] }));
-    }
+    };
 
-    handleDeleteOption(optionToRemove) {
+    handleDeleteOption = (optionToRemove) =>{
         this.setState((prevState) => ({
             options: prevState.options.filter((option) => optionToRemove !== option)
         }));
-    }
+    };
 
     //Look at Mozilla developer network to look at array concatenation
-    handlePick() {
+    handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
         alert(option);
-    }
+    };
 
-    handleAddOption(option) {
+    handleAddOption = (option) => {
 
         if (!option) {
             return 'Enter valid value to add item';
@@ -107,7 +100,7 @@ export default class IndecisionApp extends React.Component {
         }));
 
 
-    }
+    };
 
     render() {
         const subtitle = 'Put your life in the hands of a computer';

@@ -8,6 +8,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AddOption from './components/AddOption';
 import Option from './components/Option';
+import Header from './components/Header';
+import Action from './components/Action';
 
 //React components extend react and have to be title case
 //Component state allows us to manage objects. Components re-render with updates
@@ -137,34 +139,9 @@ class IndecisionApp extends React.Component {
 }
 
 
-//Stateless functional component
-//sped up because it doesn't have to manage lifecycle
-const Header = (props) => {
-    return (
-        <div>
-            <h1>{props.title}</h1>
-            {props.subtitle && <h2>{props.subtitle}</h2>}
-        </div>
-    );
-};
 
-Header.defaultProps = {
-    title: 'Indecision App'
-}
 
-//converting Action to stateless component from class based stateful one
-const Action = (props) => {
-    return (
-        <div>
-            <button
-                onClick={props.handlePick}
-                disabled={!props.hasOptions}
-            >
-                What should I do?
-            </button>
-        </div>
-    );
-};
+
 
 const Options = (props) => {
     return (

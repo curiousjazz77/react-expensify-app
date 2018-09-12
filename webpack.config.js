@@ -18,7 +18,11 @@ module.exports = {
     },
     //make source maps work
     //webpack.js.org/configuration/devtool/#devtool
-    devtool: 'cheap-module-eval-source-map'
+    devtool: 'cheap-module-eval-source-map',
+    devServer: { //serves up bundle.js from memory instead of a separate file
+        contentBase: path.join(__dirname, 'public')
+    }
+
 };
 
 // loader

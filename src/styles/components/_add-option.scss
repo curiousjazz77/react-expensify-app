@@ -7,3 +7,13 @@
   margin: $m-size;
   padding: 0 $m-size;
 }
+
+//Add Option
+.add-option {
+  display: flex;
+
+}
+
+.add-option__input {
+  flex-grow: 1;
+}

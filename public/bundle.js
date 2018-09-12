@@ -1005,6 +1005,7 @@ var _IndecisionApp2 = _interopRequireDefault(_IndecisionApp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//here we are in charge of only bootstrapping things that live elsewhere
 _reactDom2.default.render(_react2.default.createElement(_IndecisionApp2.default, null), document.getElementById('app')); //install (yarn add validator@8.0.0) ->import ->use
 // we grab the default export from validator library
 //google npm validator

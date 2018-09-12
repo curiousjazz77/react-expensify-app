@@ -7,6 +7,14 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'public'), //relative to your machine
         filename: 'bundle.js'
+    },
+    module: {
+        //webpack.js.org/configuration/module/#module-rules
+        rules: [{
+            loader: 'babel-loader',
+            test: /\.js$/,
+            exclude: /node_modules/
+        }]
     }
 };
 

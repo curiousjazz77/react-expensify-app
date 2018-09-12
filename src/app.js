@@ -26,4 +26,11 @@ const template = (
     </div>
 );
 
-ReactDOM.render(<Layout><p>This is inline</p></Layout>, document.getElementById('app'));
+ReactDOM.render((
+    <Layout>
+        <div>
+            <h1>Page title</h1>
+            <p>This is my page</p>
+        </div>
+    </Layout>
+), document.getElementById('app'));

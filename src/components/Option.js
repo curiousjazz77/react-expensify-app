@@ -1,6 +1,6 @@
 import React from "react";
 
-export default (props) => {
+const Option = (props) => {
     return (
         <div>
             {props.optionText}
@@ -14,3 +14,6 @@ export default (props) => {
         </div>
     );
 };
+
+export default Option; //so that the component is named in dev tools and doesn't come up as unknown if we remove the component name above
+//and only say export default (props) =>

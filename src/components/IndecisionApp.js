@@ -4,6 +4,10 @@ import Action from "./Action";
 import Options from "./Options";
 import AddOption from "./AddOption";
 
+//React components extend react and have to be title case
+//Component state allows us to manage objects. Components re-render with updates
+//We are using 4 stateless components, making the application slightly faster and easier to work with
+
 export default class IndecisionApp extends React.Component {
     constructor(props) {
         super(props);

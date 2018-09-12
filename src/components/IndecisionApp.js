@@ -12,6 +12,42 @@ export default class IndecisionApp extends React.Component {
     state = {
         options: []
     };
+    //It's valid for a parent to pass down new prop values, but props is read only in the options component
+    //THis is why wiping the array causes all the options to go away
+    //Converted handle object from es6 methods to properties
+    handleDeleteOptions = () => {
+        this.setState(() => ({ options: [] }));
+    };
+
+    handleDeleteOption = (optionToRemove) => {
+        this.setState((prevState) => ({
+            options: prevState.options.filter((option) => optionToRemove !== option)
+        }));
+    };
+
+    //Look at Mozilla developer network to look at array concatenation
+    handlePick = () => {
+        const randomNum = Math.floor(Math.random() * this.state.options.length);
+        const option = this.state.options[randomNum];
+        alert(option);
+    };
+
+    handleAddOption = (option) => {
+
+        if (!option) {
+            return 'Enter valid value to add item';
+        }
+        else if (this.state.options.indexOf(option) > -1) {
+            return 'This option already exists';
+
+        }
+        //equivalent to an else clause
+        this.setState((prevState) => ({
+            options: prevState.options.concat(option)
+        }));
+
+
+    };
     /*only accessible in class based components
     * no way to access lifecycle in stateless functional components*/
     componentDidMount(){ //called internally on react side so get spelling right
@@ -65,42 +101,6 @@ export default class IndecisionApp extends React.Component {
     >Object {age: 26}
     26
     */
-
-    //It's valid for a parent to pass down new prop values, but props is read only in the options component
-    //THis is why wiping the array causes all the options to go away
-    handleDeleteOptions = () => {
-        this.setState(() => ({ options: [] }));
-    };
-
-    handleDeleteOption = (optionToRemove) =>{
-        this.setState((prevState) => ({
-            options: prevState.options.filter((option) => optionToRemove !== option)
-        }));
-    };
-
-    //Look at Mozilla developer network to look at array concatenation
-    handlePick = () => {
-        const randomNum = Math.floor(Math.random() * this.state.options.length);
-        const option = this.state.options[randomNum];
-        alert(option);
-    };
-
-    handleAddOption = (option) => {
-
-        if (!option) {
-            return 'Enter valid value to add item';
-        }
-        else if (this.state.options.indexOf(option) > -1) {
-            return 'This option already exists';
-
-        }
-        //equivalent to an else clause
-        this.setState((prevState) => ({
-            options: prevState.options.concat(option)
-        }));
-
-
-    };
 
     render() {
         const subtitle = 'Put your life in the hands of a computer';

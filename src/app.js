@@ -8,4 +8,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp';
 //here we are in charge of only bootstrapping things that live elsewhere
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+
+const Layout = (props) => {
+    return (
+        <div>
+            <p>header</p>
+            {props.content}
+            <p>footer</p>
+        </div>
+    );
+};
+
+const template = (
+    <div>
+    <h1>Page title</h1>
+        <p>This is my page</p>
+    </div>
+);
+
+ReactDOM.render(<Layout content={template} />, document.getElementById('app'));

@@ -1,0 +1,14 @@
+//rem better than pixels
+
+html {
+  font-size: 62.5%; //if 1 rem is 16px, 16 *62.5=10, we converted rem to base 10
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+}
+
+h1 {
+  font-size: 2.2rem; //2.2 rem is 22
+}

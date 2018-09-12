@@ -11,15 +11,20 @@ import OptionModal from "./OptionModal";
 
 export default class IndecisionApp extends React.Component {
     state = {
-        options: []
+        options: [],
+        selectedOption: undefined
     };
     //It's valid for a parent to pass down new prop values, but props is read only in the options component
     //THis is why wiping the array causes all the options to go away
     //Converted handle object from es6 methods to properties
     handleDeleteOptions = () => {
-        this.setState(() => ({ options: [] }));
+        this.setState(() => ({options: []}));
     };
-
+    handleClearSelectedOption = () => {
+        this.setState(() => ({
+            selectedOption: undefined
+        }));
+    };
     handleDeleteOption = (optionToRemove) => {
         this.setState((prevState) => ({
             options: prevState.options.filter((option) => optionToRemove !== option)
@@ -30,7 +35,9 @@ export default class IndecisionApp extends React.Component {
     handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
-        alert(option);
+        this.setState(() => ({
+            selectedOption: option
+        }));
     };
 
     handleAddOption = (option) => {
@@ -49,9 +56,10 @@ export default class IndecisionApp extends React.Component {
 
 
     };
+
     /*only accessible in class based components
     * no way to access lifecycle in stateless functional components*/
-    componentDidMount(){ //called internally on react side so get spelling right
+    componentDidMount() { //called internally on react side so get spelling right
 
         try {
             const json = localStorage.getItem('options');
@@ -61,7 +69,7 @@ export default class IndecisionApp extends React.Component {
                 this.setState(() => ({options}))
             }
         }
-        catch (e){
+        catch (e) {
             //if things go wrong - Do nothing at all is json data invalid. we fall back to previous array
         }
 
@@ -72,7 +80,7 @@ export default class IndecisionApp extends React.Component {
     * your component has changed
     * Saves to local storage each time
     * Use localStorage.getItem('options') to retrieve from console*/
-    componentDidUpdate(prevProps, prevState){ //called internally on react side so get spelling right
+    componentDidUpdate(prevProps, prevState) { //called internally on react side so get spelling right
         if (prevState.options.length !== this.state.options.length) {
             const json = JSON.stringify((this.state.options));
             localStorage.setItem('options', json)
@@ -86,9 +94,10 @@ export default class IndecisionApp extends React.Component {
     * ReactDOM.render(React.createElement('p'), document.getElementById('app'));
     * Then, component will unmount fires.
     * */
-    componentWillUnmount(){
+    componentWillUnmount() {
         console.log('component will unmount!')
     }
+
     render() {
         const subtitle = 'Put your life in the hands of a computer';
         return (
@@ -106,7 +115,10 @@ export default class IndecisionApp extends React.Component {
                 <AddOption
                     handleAddOption={this.handleAddOption}
                 />
-                <OptionModal />
+                <OptionModal
+                    selectedOption={this.state.selectedOption}
+                    handleClearSelectedOption={this.handleClearSelectedOption}
+                />
             </div>
         );
     }

@@ -1,8 +1,9 @@
 import React from "react";
-import Header from "./Header";
-import Action from "./Action";
-import Options from "./Options";
 import AddOption from "./AddOption";
+import Action from "./Action";
+import Header from "./Header";
+import Options from "./Options";
+import OptionModal from "./OptionModal";
 
 //React components extend react and have to be title case
 //Component state allows us to manage objects. Components re-render with updates
@@ -88,20 +89,6 @@ export default class IndecisionApp extends React.Component {
     componentWillUnmount(){
         console.log('component will unmount!')
     }
-
-    /*localStorage: only works with string data...not objects and arrays. SO we can use JSON!!
-    // localStorage.setItem('name', 'And');
-    // undefined
-    // localStorage.getItem('name');
-    // "And"
-
-    const json = JSON.stringify({age: 26})
-    JSON.parse(json)
-    JSON.parse(json).age
-    >Object {age: 26}
-    26
-    */
-
     render() {
         const subtitle = 'Put your life in the hands of a computer';
         return (
@@ -119,6 +106,7 @@ export default class IndecisionApp extends React.Component {
                 <AddOption
                     handleAddOption={this.handleAddOption}
                 />
+                <OptionModal />
             </div>
         );
     }

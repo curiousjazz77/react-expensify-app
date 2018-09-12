@@ -1006,6 +1006,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // we grab the default export from validator library
 //google npm validator
 // yarn add react@16.0.0 react-dom@16.0.0
+//must teach webpack to use babel before using jsx - so babel loader comes in handy for this.
 
 var template = _react2.default.createElement(
   'p',

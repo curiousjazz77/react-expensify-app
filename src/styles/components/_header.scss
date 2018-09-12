@@ -1,8 +1,8 @@
 .header {
-  background: #20222b;
+  background: $off-black;
   color: white;
   margin-bottom: 4.8rem;//space between header and things below it
-  padding: 1.6rem 0;
+  padding: $m-size 0;
 }
 
 //problem using this: nesting and specificity issues.
@@ -19,8 +19,8 @@
 }
 
 .header__subtitle{ //naming convention, no special meaning
-  color: #a5afd7;
-  font-size: 1.6rem;
+  color: $light-purple;
+  font-size: $m-size;
   font-weight: 500;
   margin: 0;
 }

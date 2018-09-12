@@ -3,12 +3,13 @@ import React from 'react';
 //AddOption Component
 //doesn't make sense for this behavior to live in the parent
 export default class AddOption extends React.Component {
+    state = {
+        error: undefined
+
+    };
     constructor(props) {
         super(props);
         this.handleAddOption = this.handleAddOption.bind(this);
-        this.state = {
-            error: undefined
-        };
     }
 
     handleAddOption(e) { //first handle add option passed in from this component

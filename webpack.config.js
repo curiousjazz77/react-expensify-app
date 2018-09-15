@@ -9,7 +9,6 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        //webpack.js.org/configuration/module/#module-rules
         rules: [{
             loader: 'babel-loader',
             test: /\.js$/,

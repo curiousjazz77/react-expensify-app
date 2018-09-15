@@ -1,4 +1,4 @@
-# react-indecision-app
+# react-expensify-app
 Udemy course project
 
 

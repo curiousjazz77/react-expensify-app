@@ -1,8 +1,8 @@
 {
-  "name": "indecision-app",
+  "name": "boilerplate",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/curiousjazz77/react-indecision-app.git",
+  "repository": "https://github.com/curiousjazz77/react-expensify-app.git",
   "author": "curiousjazz77 <10506008+curiousjazz77@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
